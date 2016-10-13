@@ -15,14 +15,17 @@
 
 namespace Seeren\Container\Service;
 
+use Seeren\Container\Cache\CacheInterface;
+
 /**
  * Class for represent a service provider
  * 
  * @category Seeren
  * @package Container
  * @subpackage Service
+ * @abstract
  */
-class ServiceProvider implements ServiceProviderInterface
+abstract class ServiceProvider implements ServiceInterface
 {
 
    protected
@@ -36,46 +39,19 @@ class ServiceProvider implements ServiceProviderInterface
     * 
     * @return null
     */
-   public function __construct()
+   protected function __construct()
    {
        $this->service = [];
    }
 
    /**
-    * Set service
-    *
-    * @param string $id service id
-    * @param mixed $value service value
-    * @return null
-    */
-   public function set(string $id, $value)
-   {
-       $this->service[$id] = $value;
-   }
-
-   /**
-    * Remove service
-    *
-    * @param string $id service id
-    * @return bool unset or not
-    */
-   public function remove(string $id): bool
-   {
-       if (isset($this->service)) {
-           unset($this->service[$id]);
-           return true;
-       }
-       return false;
-   }
-
-   /**
     * Register container
     *
-    * @param ServiceContainerInterface $container service container
-    * @return ServiceProviderInterface self
+    * @param CacheInterface $container cache container
+    * @return ServiceInterface provider
     */
-   public function register(
-       ServiceContainerInterface $container): ServiceProviderInterface
+   public final function register(
+       CacheInterface $container): ServiceInterface
    {
        foreach ($this->service as $key => &$value) {
            $container->set($key, $value);
@@ -86,13 +62,13 @@ class ServiceProvider implements ServiceProviderInterface
    /**
     * Unregister container
     *
-    * @param ServiceContainerInterface $container service container
-    * @return ServiceProviderInterface self
+    * @param CacheInterface $container cache container
+    * @return ServiceInterface provider
     */
-   public function unregister(
-       ServiceContainerInterface $container): ServiceProviderInterface
+   public final function unregister(
+       CacheInterface $container): ServiceInterface
    {
-       foreach ($this->service as $key => &$value) {
+       foreach (array_keys($this->service) as $key) {
            $container->remove($key);
        }
        return $this;

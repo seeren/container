@@ -15,8 +15,10 @@
 
 namespace Seeren\Container\Service;
 
+use Seeren\Container\Cache\CacheInterface;
+
 /**
- * Interface for represent a service
+ * Interface for represent a service provider
  * 
  * @category Seeren
  * @package Container
@@ -26,20 +28,19 @@ interface ServiceInterface
 {
 
    /**
-    * Set service
-    * 
-    * @param string $id service id
-    * @param mixed $value service value
-    * @return null
+    * Register container
+    *
+    * @param CacheInterface $container cache container
+    * @return ServiceInterface self
     */
-   public function set(string $id, $value);
+   public function register(CacheInterface $container): self;
 
    /**
-    * Remove service
+    * Unregister container
     *
-    * @param string $id service id
-    * @return bool unset or not
+    * @param CacheInterface $container cache container
+    * @return ServiceInterface self
     */
-   public function remove(string $id): bool;
+   public function unregister(CacheInterface $container): self;
 
 }
