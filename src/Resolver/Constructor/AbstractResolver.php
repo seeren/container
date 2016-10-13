@@ -22,6 +22,7 @@ use Seeren\Container\Exception\NoFoundException;
 use ReflectionClass;
 use ReflectionParameter;
 use ReflectionException;
+use Throwable;
 
 /**
  * Class for represent a constructor reflection resolver

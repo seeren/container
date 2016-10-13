@@ -28,7 +28,6 @@ use ReflectionParameter;
  * @category Seeren
  * @package Container
  * @subpackage Resolver\Constructor
- * @final
  */
 class DocumentationResolver extends AbstractResolver implements
     ResolverInterface
@@ -39,7 +38,7 @@ class DocumentationResolver extends AbstractResolver implements
     * 
     * @return null
     */
-   public final function __construct()
+   public function __construct()
    {
        parent::__construct();
    }

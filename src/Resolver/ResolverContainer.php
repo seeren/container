@@ -27,9 +27,8 @@ use Seeren\Container\Cache\CacheInterface;
  * @category Seeren
  * @package Container
  * @subpackage Resolver
- * @final
  */
-final class ResolverContainer implements ResolverInterface, ContainerInterface
+class ResolverContainer implements ResolverInterface, ContainerInterface
 {
 
    /**

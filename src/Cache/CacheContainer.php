@@ -27,12 +27,11 @@ use Throwable;
  * @category Seeren
  * @package Container
  * @subpackage Cache
- * @final
  */
-final class CacheContainer implements CacheInterface, ContainerInterface
+class CacheContainer implements CacheInterface, ContainerInterface
 {
 
-   private
+   protected
       /**
        * @var array service collection
        */
@@ -43,7 +42,7 @@ final class CacheContainer implements CacheInterface, ContainerInterface
     * 
     * @return null
     */
-   public final function __construct()
+   public function __construct()
    {
        $this->service = [];
    }

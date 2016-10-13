@@ -91,7 +91,7 @@ class Container implements ContainerInterface
     */
    public final function has($id): bool
    {
-       return $this->service->has($id);
+       return $this->cache->has($id);
    }
 
 }

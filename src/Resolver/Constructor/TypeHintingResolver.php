@@ -38,7 +38,7 @@ class TypeHintingResolver extends AbstractResolver implements
     * 
     * @return null
     */
-   public final function __construct()
+   public function __construct()
    {
        parent::__construct();
    }
