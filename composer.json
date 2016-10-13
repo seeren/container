@@ -1,6 +1,6 @@
 {
     "name": "seeren/container",
-    "description": "Contain and resolve services",
+    "description": "Psr 11 implementation, resolve and cache dependencies",
     "type": "library",
     "license": "MIT",
     "authors": [
