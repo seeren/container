@@ -15,7 +15,7 @@
 
 namespace Seeren\Container\Exception;
 
-use Psr\Container\Exception\NotFoundException;
+use Psr\Container\Exception\NotFoundException as PsrNotFoundException;
 use Exception;
 
 /**
@@ -25,7 +25,7 @@ use Exception;
  * @package Container
  * @subpackage Exception
  */
-class NoFoundException  extends Exception implements NotFoundException
+class NoFoundException extends Exception implements PsrNotFoundException
 {
 
    /**
@@ -38,7 +38,7 @@ class NoFoundException  extends Exception implements NotFoundException
     */
    public function __construct(
        string $message,
-       int $code = E_ERROR,
+       int $code = E_WARNING,
        Exception $previous = null)
    {
        parent::__construct($message, $code, $previous);
