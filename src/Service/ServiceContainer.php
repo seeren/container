@@ -66,7 +66,7 @@ class ServiceContainer implements ServiceContainerInterface, ContainerInterface
                $this->service[$id] = $this->service[$id](...$args);
            } catch (Throwable $e) {
                throw new ContainerException(
-                   "Can't get : error for" . $id . ": " . $e->getMessage());
+                   "Can't get : " . $id . ": " . $e->getMessage());
            }
        }
        return $this->service[$id];
