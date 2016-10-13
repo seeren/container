@@ -15,7 +15,7 @@
 
 namespace Seeren\Container\Exception;
 
-use Psr\Container\Exception\ContainerException;
+use Psr\Container\Exception\ContainerException as PsrContainerException;
 use Exception;
 
 /**
@@ -25,7 +25,7 @@ use Exception;
  * @package Container
  * @subpackage Exception
  */
-class ContainerException extends Exception implements ContainerException
+class ContainerException extends Exception implements PsrContainerException
 {
 
    /**
