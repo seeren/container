@@ -50,8 +50,7 @@ abstract class ServiceProvider implements ServiceInterface
     * @param CacheInterface $container cache container
     * @return ServiceInterface provider
     */
-   public final function register(
-       CacheInterface $container): ServiceInterface
+   public final function register(CacheInterface $container): ServiceInterface
    {
        foreach ($this->service as $key => &$value) {
            $container->set($key, $value);
@@ -65,8 +64,7 @@ abstract class ServiceProvider implements ServiceInterface
     * @param CacheInterface $container cache container
     * @return ServiceInterface provider
     */
-   public final function unregister(
-       CacheInterface $container): ServiceInterface
+   public final function unregister(CacheInterface $container): ServiceInterface
    {
        foreach (array_keys($this->service) as $key) {
            $container->remove($key);
