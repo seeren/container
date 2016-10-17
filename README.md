@@ -8,7 +8,7 @@ Can be used for resolve whole app, manage persistence or register providers.
 
 ### Seeren\Container\Container
 
-Container need resolver and cache at construction then provide get and has methods. Resolver is a factory like using reflection whereas cache manage persistence of services.
+Container need resolver and cache at construction then provide get and has methods. Resolver is a factory like using reflection whereas Cache manage persistence of services.
 
 ```php
 $container = new Container(
@@ -55,7 +55,3 @@ $ phpunit test/ContainerTest.php
 $ phpunit test/ResolverContainerTest.php
 $ phpunit test/CacheContainerTest.php
 ```
-
-#### License
-
-[MIT](https://github.com/Seeren/Seeren/blob/master/LICENSE)
