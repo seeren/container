@@ -18,6 +18,7 @@ namespace Seeren\Container;
 use Psr\Container\ContainerInterface;
 use Seeren\Container\Resolver\ResolverInterface;
 use Seeren\Container\Cache\CacheInterface;
+use Seeren\Container\Service\ServiceInterface;
 use Seeren\Container\Exception\NoFoundException;
 use Seeren\Container\Exception\ContainerException;
 use Throwable;
@@ -28,7 +29,7 @@ use Throwable;
  * @category Seeren
  * @package Container
  */
-class Container implements ContainerInterface
+class Container implements ContainerInterface, CacheInterface, ResolverInterface
 {
 
    protected
@@ -48,7 +49,7 @@ class Container implements ContainerInterface
     * @param CacheInterface $cache cache
     * @return null
     */
-   public final function __construct(
+   public function __construct(
        ResolverInterface $resolver,
        CacheInterface $cache)
    {
@@ -92,6 +93,61 @@ class Container implements ContainerInterface
    public final function has($id): bool
    {
        return $this->cache->has($id);
+   }
+
+   /**
+    * Resolve service
+    * 
+    * @param string $id service id
+    * @param CacheInterface $cache cache container
+    * @return mixed service or null
+    * 
+    * @throws NoFoundException for no found service
+    * @throws ContainerException for error
+    */
+   public final function resolve(string $id, CacheInterface $cache = null)
+   {
+       try {
+           return $this->resolver->resolve($id, $service);
+       } catch (NoFoundException $e) {
+           throw $e;
+       } catch (ContainerException $e) {
+           throw $e;
+       }
+   }
+
+   /**
+    * Set service
+    *
+    * @param string $id service id
+    * @param mixed $value service value
+    * @return null
+    */
+   public final function set(string $id, $value)
+   {
+       return $this->cache->set($id, $value);
+   }
+
+   /**
+    * Register service
+    *
+    * @param ServiceInterface $service service provider
+    * @return CacheInterface CacheInterface
+    */
+   public final function register(ServiceInterface $service): CacheInterface
+   {
+       return $this->cache->register($service);
+   }
+
+   /**
+    * Unregister service
+    *
+    * @param ServiceInterface $service service provider
+    * @return CacheInterface CacheInterface
+    */
+   public final function unregister(ServiceInterface $service): CacheInterface
+   {
+       return $this->cache->unregister($service);
    }
 
 }
