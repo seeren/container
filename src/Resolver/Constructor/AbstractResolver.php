@@ -11,7 +11,7 @@
  *
  * @copyright (c) Cyril Ichti <consultant@seeren.fr>
  * @link http://www.seeren.fr/ Seeren
- * @version 1.0.1
+ * @version 1.1.1
  */
 
 namespace Seeren\Container\Resolver\Constructor;
