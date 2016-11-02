@@ -11,7 +11,7 @@
  *
  * @copyright (c) Cyril Ichti <consultant@seeren.fr>
  * @link http://www.seeren.fr/ Seeren
- * @version 1.1.1
+ * @version 1.1.2
  */
 
 namespace Seeren\Container\Resolver\Constructor;
@@ -29,8 +29,7 @@ use ReflectionParameter;
  * @package Container
  * @subpackage Resolver\Constructor
  */
-class TypeHintingResolver extends AbstractResolver implements
-    ResolverInterface
+class TypeHintingResolver extends AbstractResolver implements ResolverInterface
 {
 
    /**
@@ -58,8 +57,9 @@ class TypeHintingResolver extends AbstractResolver implements
        CacheInterface $cache = null)
    {
        try {
-           return ($class = $param->getClass())
-                ? $this->resolve($class->name, $cache)
+           return (($type = $param->getType())
+                && !$type->isBuiltin())
+                ? $this->resolve($type->__toString(), $cache)
                 : null;
        } catch (NoFoundException $e) {
            throw new NoFoundException(
