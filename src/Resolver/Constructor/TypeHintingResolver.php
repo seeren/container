@@ -11,7 +11,7 @@
  *
  * @copyright (c) Cyril Ichti <consultant@seeren.fr>
  * @link http://www.seeren.fr/ Seeren
- * @version 1.1.2
+ * @version 1.1.3
  */
 
 namespace Seeren\Container\Resolver\Constructor;
@@ -57,8 +57,9 @@ class TypeHintingResolver extends AbstractResolver implements ResolverInterface
        CacheInterface $cache = null)
    {
        try {
-           return (($type = $param->getType())
-                && !$type->isBuiltin())
+           return (
+                   !$param->isOptional()
+                && ($type = $param->getType()) && !$type->isBuiltin())
                 ? $this->resolve($type->__toString(), $cache)
                 : null;
        } catch (NoFoundException $e) {
