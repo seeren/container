@@ -57,9 +57,8 @@ class TypeHintingResolver extends AbstractResolver implements ResolverInterface
        CacheInterface $cache = null)
    {
        try {
-           return (
-                   !$param->isOptional()
-                && ($type = $param->getType()) && !$type->isBuiltin())
+           return (!$param->isOptional()
+               && ($type = $param->getType()) && !$type->isBuiltin())
                 ? $this->resolve($type->__toString(), $cache)
                 : null;
        } catch (NoFoundException $e) {

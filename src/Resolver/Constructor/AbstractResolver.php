@@ -110,10 +110,10 @@ abstract class AbstractResolver
            return $instance;
        } catch (NoFoundException $e) {
            throw new NoFoundException(
-                   "Can't resolve " . $id . ": " . $e->getMessage());
+               "Can't resolve " . $id . ": " . $e->getMessage());
        } catch (Throwable $e) {
            throw new ContainerException(
-                   "Can't resolve " . $id . ": " . $e->getMessage());
+               "Can't resolve " . $id . ": " . $e->getMessage());
        }
    }
 
