@@ -10,12 +10,12 @@
  *
  * @copyright (c) Cyril Ichti <consultant@seeren.fr>
  * @link http://www.seeren.fr/ Seeren
- * @version 1.1.1
+ * @version 1.1.2
  */
 
 namespace Seeren\Container\Exception;
 
-use Psr\Container\Exception\NotFoundException as PsrNotFoundException;
+use Psr\Container\NotFoundException as PsrNotFoundException;
 use Exception;
 
 /**
