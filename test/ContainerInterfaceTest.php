@@ -10,14 +10,14 @@
  *
  * @copyright (c) Cyril Ichti <consultant@seeren.fr>
  * @link http://www.seeren.fr/ Seeren
- * @version 1.1.1
+ * @version 1.1.2
  */
 
 namespace Seeren\Container\Test;
 
 use Psr\Container\ContainerInterface;
-use Psr\Container\Exception\ContainerException;
-use Psr\Container\Exception\NotFoundException;
+use Psr\Container\ContainerException;
+use Psr\Container\NotFoundException;
 use Exception;
 
 /**
@@ -41,7 +41,7 @@ abstract class ContainerInterfaceTest extends \PHPUnit_Framework_TestCase
    /**
     * Test ContainerInterface::get
     *
-    * @expectedException Psr\Container\Exception\NotFoundException
+    * @expectedException Psr\Container\NotFoundException
     */
    public final function testGetNotFoundException()
    {
@@ -51,7 +51,7 @@ abstract class ContainerInterfaceTest extends \PHPUnit_Framework_TestCase
    /**
     * Test ContainerInterface::get
     * 
-    * @expectedException Psr\Container\Exception\ContainerException
+    * @expectedException Psr\Container\ContainerException
     *
     */
    public final function testGetContainerException()
