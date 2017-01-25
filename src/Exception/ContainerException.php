@@ -10,12 +10,12 @@
  *
  * @copyright (c) Cyril Ichti <consultant@seeren.fr>
  * @link http://www.seeren.fr/ Seeren
- * @version 1.1.2
+ * @version 1.1.3
  */
 
 namespace Seeren\Container\Exception;
 
-use Psr\Container\ContainerException as PsrContainerException;
+use Psr\Container\ContainerExceptionInterface as PsrContainerException;
 use Exception;
 
 /**
