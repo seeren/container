@@ -1,9 +1,7 @@
- [![GitHub license](https://img.shields.io/badge/license-MIT-orange.svg)](https://raw.githubusercontent.com/seeren/cache/master/LICENSE) [![Packagist](https://img.shields.io/packagist/v/seeren/container.svg)]() [![Packagist](https://img.shields.io/packagist/dt/seeren/container.svg)]()
+ [![Build Status](https://travis-ci.org/seeren/container.svg?branch=master)](https://travis-ci.org/seeren/container) [![GitHub license](https://img.shields.io/badge/license-MIT-orange.svg)](https://raw.githubusercontent.com/seeren/cache/master/LICENSE) [![Packagist](https://img.shields.io/packagist/v/seeren/container.svg)]() [![Packagist](https://img.shields.io/packagist/dt/seeren/container.svg)]()
 
 # Seeren\Container\
 Psr 11 implementation, resolve and cache dependencies.
-
-## Code Example
 Can be used for resolve whole app, manage persistence or register providers.
 
 ## Seeren\Container\Container
