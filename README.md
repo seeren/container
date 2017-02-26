@@ -19,7 +19,7 @@ Differents resolvers can try to return new service.
 $controller = (new TypeHintingResolver)->resolve(MyController::class);
 ```
 
-### Seeren\Container\Cache\CacheContainer
+## Seeren\Container\Cache\CacheContainer
 Cache manage service persistence for a container.
 ```php
 $cache = new CacheContainer;
