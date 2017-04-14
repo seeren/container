@@ -98,17 +98,17 @@ class Container implements ContainerInterface, CacheInterface, ResolverInterface
    /**
     * Resolve service
     * 
-    * @param string $id service id
+    * @param string $className service id
     * @param CacheInterface $cache cache container
     * @return mixed service or null
     * 
     * @throws NoFoundException for no found service
     * @throws ContainerException for error
     */
-   public final function resolve(string $id, CacheInterface $cache = null)
+   public final function resolve(string $className, CacheInterface $cache = null)
    {
        try {
-           return $this->resolver->resolve($id, $service);
+           return $this->resolver->resolve($className, $cache);
        } catch (NoFoundException $e) {
            throw $e;
        } catch (ContainerException $e) {

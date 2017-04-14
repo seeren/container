@@ -65,7 +65,7 @@ class CacheContainer implements CacheInterface, ContainerInterface
            $args = func_get_args();
            $args[0] = $this;
            try {
-               $this->service[$className] = $this->service[$id](...$args);
+               $this->service[$className] = $this->service[$className](...$args);
            } catch (Throwable $e) {
                throw new ContainerException(
                    "Can't get " . $className . ": " . $e->getMessage());
