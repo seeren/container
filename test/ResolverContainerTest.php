@@ -10,15 +10,15 @@
  *
  * @copyright (c) Cyril Ichti <consultant@seeren.fr>
  * @link http://www.seeren.fr/ Seeren
- * @version 1.1.1
+ * @version 1.2.1
  */
 
 namespace Seeren\Container\Test;
 
 use Psr\Container\ContainerInterface;
-use Seeren\Container\Container;
 use Seeren\Container\Resolver\Constructor\TypeHintingResolver;
 use Seeren\Container\Resolver\ResolverContainer;
+use ReflectionClass;
 
 /**
  * Class for test ResolverContainer
@@ -37,12 +37,12 @@ class ResolverContainerTest extends ContainerInterfaceTest
     */
    protected function getContainerInterface(): ContainerInterface
    {
-       return $this->getMock(
-           ResolverContainer::class,
-           [],
-           [
-                $this->getMock(TypeHintingResolver::class)
-           ]
+
+       return (new ReflectionClass(ResolverContainer::class))
+            ->newInstanceArgs([
+                (new ReflectionClass(TypeHintingResolver::class))
+                ->newInstanceArgs([])
+            ]      
        );
    }
 
