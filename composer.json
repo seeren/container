@@ -1,6 +1,7 @@
 {
     "name": "seeren/container",
     "description": "Psr 11 implementation, resolve and cache dependencies",
+    "keywords": ["psr-6", "psr-7" ,"cache"],
     "type": "library",
     "license": "MIT",
     "authors": [
@@ -20,5 +21,8 @@
 		"Seeren\\Container\\": "src/",
 		"Seeren\\Container\\Test\\": "test/"
       }
-  }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "6.1"
+    }
 }
