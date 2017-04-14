@@ -10,14 +10,12 @@
  *
  * @copyright (c) Cyril Ichti <consultant@seeren.fr>
  * @link http://www.seeren.fr/ Seeren
- * @version 1.1.3
+ * @version 1.1.4
  */
 
 namespace Seeren\Container\Test;
 
 use Psr\Container\ContainerInterface;
-use Psr\Container\ContainerExceptionInterface;
-use Psr\Container\NotFoundExceptionInterface;
 use Exception;
 
 /**
@@ -28,7 +26,7 @@ use Exception;
  * @subpackage Test
  * @abstract
  */
-abstract class ContainerInterfaceTest extends \PHPUnit_Framework_TestCase
+abstract class ContainerInterfaceTest extends \PHPUnit\Framework\TestCase
 {
 
    /**
