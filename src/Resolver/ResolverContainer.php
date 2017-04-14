@@ -45,17 +45,17 @@ class ResolverContainer implements ResolverInterface, ContainerInterface
    /**
     * Get service
     *
-    * @param string $id service id
+    * @param string $className service id
     * @param CacheInterface $cache cache container
     * @return mixed service
     *
     * @throws NoFoundException for no found service
     * @throws ContainerException for error
     */
-   public final function get($id, CacheInterface $cache = null)
+   public final function get($className, CacheInterface $cache = null)
    {
        try {
-           return $this->resolve($id, $cache);
+           return $this->resolve($className, $cache);
        } catch (NoFoundException $e) {
            throw $e;
        } catch (ContainerException $e) {
@@ -66,10 +66,10 @@ class ResolverContainer implements ResolverInterface, ContainerInterface
    /**
     * Has service
     * 
-    * @param string $id service id
+    * @param string $className service id
     * @return boolean
     */
-   public final function has($id): bool
+   public final function has($className): bool
    {
        return false;
    }
@@ -77,17 +77,17 @@ class ResolverContainer implements ResolverInterface, ContainerInterface
    /**
     * Resolve service
     * 
-    * @param string $id service id
+    * @param string $className service id
     * @param CacheInterface $cache cache container
     * @return mixed service or null
     * 
     * @throws NoFoundException for no found service
     * @throws ContainerException for error
     */
-   public final function resolve(string $id, CacheInterface $cache = null)
+   public final function resolve(string $className, CacheInterface $cache = null)
    {
        try {
-           return $this->resolver->resolve($id, $cache);
+           return $this->resolver->resolve($className, $cache);
        } catch (NoFoundException $e) {
            throw $e;
        } catch (ContainerException $e) {

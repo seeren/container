@@ -30,11 +30,11 @@ interface CacheInterface
     /**
      * Set service
      *
-     * @param string $id service id
+     * @param string $className service id
      * @param mixed $value service value
      * @return null
      */
-    public function set(string $id, $value);
+    public function set(string $className, $value);
 
    /**
     * Register service

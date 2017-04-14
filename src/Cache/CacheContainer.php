@@ -50,50 +50,51 @@ class CacheContainer implements CacheInterface, ContainerInterface
    /**
     * Get service
     *
-    * @param string $id service id
+    * @param string $className service id
     * @return mixed service
     *
     * @throws NoFoundException for no found service
     * @throws ContainerException for error
     */
-   public final function get($id)
+   public final function get($className)
    {
-       if (!$this->has($id)) {
-           throw new NoFoundException("Can't get " . $id . ": not found");
-       } else if (is_callable($this->service[$id])) {
+       if (!$this->has($className)) {
+           throw new NoFoundException(
+               "Can't get " . $className . ": not found");
+       } else if (is_callable($this->service[$className])) {
            $args = func_get_args();
            $args[0] = $this;
            try {
-               $this->service[$id] = $this->service[$id](...$args);
+               $this->service[$className] = $this->service[$id](...$args);
            } catch (Throwable $e) {
                throw new ContainerException(
-                   "Can't get " . $id . ": " . $e->getMessage());
+                   "Can't get " . $className . ": " . $e->getMessage());
            }
        }
-       return $this->service[$id];
+       return $this->service[$className];
     }
 
    /**
     * Has service
     * 
-    * @param string $id service id
+    * @param string $className service id
     * @return boolean
     */
-   public final function has($id): bool
+   public final function has($className): bool
    {
-       return array_key_exists($id, $this->service);
+       return array_key_exists($className, $this->service);
    }
 
    /**
     * Set service
     *
-    * @param string $id service id
+    * @param string $className service id
     * @param mixed $value service value
     * @return null
     */
-   public final function set(string $id, $value)
+   public final function set(string $className, $value)
    {
-       $this->service[$id] = $value;
+       $this->service[$className] = $value;
    }
 
    /**
