@@ -10,7 +10,7 @@
  *
  * @copyright (c) Cyril Ichti <consultant@seeren.fr>
  * @link http://www.seeren.fr/ Seeren
- * @version 1.1.1
+ * @version 1.2.1
  */
 
 namespace Seeren\Container\Test;
@@ -35,8 +35,8 @@ class CacheContainerTest extends ContainerInterfaceTest
     */
    protected function getContainerInterface(): ContainerInterface
    {
-       $container = $this->getMock(CacheContainer::class);
-       $container->set(Foo::class, function ($c) {
+       $container = $this->createMock(CacheContainer::class);
+       $container->set(Foo::class, function () {
            return new Foo;
        });
        $container->set(Bar::class, new Bar);
