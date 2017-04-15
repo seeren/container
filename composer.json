@@ -1,7 +1,7 @@
 {
     "name": "seeren/container",
     "description": "Psr 11 implementation, resolve and cache dependencies",
-    "keywords": ["psr-6", "psr-7" ,"cache"],
+    "keywords": ["psr-11", "resolver", "provider" ,"container", "dependency-injection"],
     "type": "library",
     "license": "MIT",
     "authors": [
