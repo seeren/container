@@ -11,7 +11,7 @@
  *
  * @copyright (c) Cyril Ichti <consultant@seeren.fr>
  * @link http://www.seeren.fr/ Seeren
- * @version 1.1.1
+ * @version 1.1.2
  */
 
 namespace Seeren\Container\Resolver\Constructor;
@@ -54,6 +54,7 @@ class DocumentationResolver extends AbstractResolver implements
        string $paramName,
        string $docComment): string
    {
+       $match = [];
        $delimiter = "@param";
        $type = "string|int|bool|float|array|callable";
        preg_match(

@@ -11,7 +11,7 @@
  *
  * @copyright (c) Cyril Ichti <consultant@seeren.fr>
  * @link http://www.seeren.fr/ Seeren
- * @version 1.1.1
+ * @version 1.1.2
  */
 
 namespace Seeren\Container\Resolver\Constructor;
@@ -61,23 +61,23 @@ abstract class AbstractResolver
    /**
     * Get reflexion class
     *
-    * @param string $id service id
+    * @param string $className service id
     * @return ReflectionClass reflection
     *
     * @throws NoFoundException for no found service
     * @throws ContainerException for error
     */
-   protected final function getReflection(string $id): ReflectionClass
+   protected final function getReflection(string $className): ReflectionClass
    {
        try {
-           $reflexion = new ReflectionClass($id);
+           $reflexion = new ReflectionClass($className);
        } catch (ReflectionException $e) {
            throw new NoFoundException(
-               "Can't get reflection for " . $id . ": not found");
+               "Can't get reflection for " . $className . ": not found");
        }
        if (!$reflexion->isInstantiable()) {
            throw new ContainerException(
-               "Can't get reflection for " . $id . ": not instanciable");
+               "Can't get reflection for " . $className . ": not instanciable");
        }
        return $reflexion;
    }
@@ -85,35 +85,37 @@ abstract class AbstractResolver
    /**
     * Resolve service
     *
-    * @param string $id service id
-    * @param ServiceContainerInterface $service service
+    * @param string $className service id
+    * @param CacheInterface $cache service
     * @return mixed service or null
     *
     * @throws NoFoundException for no found service
     * @throws ContainerException for error
     */
-   public final function resolve(string $id, CacheInterface $cache = null)
+   public final function resolve(
+        string $className,
+        CacheInterface $cache = null)
    {
        try {
-           if (null !== $cache && $cache->has($id)) {
-               return $cache->get($id);
+           if (null !== $cache && $cache->has($className)) {
+               return $cache->get($className);
            }
-           $reflexion = $this->getReflection($id);
+           $reflexion = $this->getReflection($className);
            $args = [];
            foreach ($reflexion->getConstructor()->getParameters() as $param) {
                $args[] = $this->getArg($param, $cache);
            }
            $instance = $reflexion->newInstanceArgs($args);
            if (null !== $cache) {
-               $cache->set($id, $instance);
+               $cache->set($className, $instance);
            }
            return $instance;
        } catch (NoFoundException $e) {
            throw new NoFoundException(
-               "Can't resolve " . $id . ": " . $e->getMessage());
+               "Can't resolve " . $className . ": " . $e->getMessage());
        } catch (Throwable $e) {
            throw new ContainerException(
-               "Can't resolve " . $id . ": " . $e->getMessage());
+               "Can't resolve " . $className . ": " . $e->getMessage());
        }
    }
 
