@@ -60,22 +60,22 @@ class Container implements ContainerInterface, CacheInterface, ResolverInterface
    /**
     * Get service
     *
-    * @param string $id service id
+    * @param string $className service id
     * @return mixed service
     *
     * @throws NoFoundException for no found service
     * @throws ContainerException for error
     */
-   public final function get($id)
+   public final function get($className)
    {
        try {
            return $this->cache->get(... func_get_args());
        } catch (Throwable $e) {
            try {
                $this->cache->set(
-                   $id,
-                   $this->resolver->resolve($id, $this->cache));
-               return $this->cache->get($id);
+                   $className,
+                   $this->resolver->resolve($className, $this->cache));
+               return $this->cache->get($className);
            } catch (NoFoundException $e) {
                throw $e;
            } catch (ContainerException $e) {
@@ -87,12 +87,12 @@ class Container implements ContainerInterface, CacheInterface, ResolverInterface
    /**
     * Has service
     *
-    * @param string $id service id
+    * @param string $className service id
     * @return boolean
     */
-   public final function has($id): bool
+   public final function has($className): bool
    {
-       return $this->cache->has($id);
+       return $this->cache->has($className);
    }
 
    /**
@@ -119,13 +119,13 @@ class Container implements ContainerInterface, CacheInterface, ResolverInterface
    /**
     * Set service
     *
-    * @param string $id service id
+    * @param string $className service id
     * @param mixed $value service value
     * @return null
     */
-   public final function set(string $id, $value)
+   public final function set(string $className, $value)
    {
-       return $this->cache->set($id, $value);
+       return $this->cache->set($className, $value);
    }
 
    /**
