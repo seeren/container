@@ -10,7 +10,7 @@
  *
  * @copyright (c) Cyril Ichti <consultant@seeren.fr>
  * @link http://www.seeren.fr/ Seeren
- * @version 1.1.2
+ * @version 1.1.3
  */
 
 namespace Seeren\Container;
@@ -121,9 +121,9 @@ class Container implements ContainerInterface, CacheInterface, ResolverInterface
     *
     * @param string $className service id
     * @param mixed $value service value
-    * @return null
+    * @return CacheInterface cache
     */
-   public final function set(string $className, $value)
+   public final function set(string $className, $value): CacheInterface
    {
        return $this->cache->set($className, $value);
    }

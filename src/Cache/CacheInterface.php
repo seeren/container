@@ -10,7 +10,7 @@
  *
  * @copyright (c) Cyril Ichti <consultant@seeren.fr>
  * @link http://www.seeren.fr/ Seeren
- * @version 1.1.1
+ * @version 1.1.2
  */
 
 namespace Seeren\Container\Cache;
@@ -32,9 +32,9 @@ interface CacheInterface
      *
      * @param string $className service id
      * @param mixed $value service value
-     * @return null
+    * @return CacheInterface self
      */
-    public function set(string $className, $value);
+    public function set(string $className, $value): self;
 
    /**
     * Register service
