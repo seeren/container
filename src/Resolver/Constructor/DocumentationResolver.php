@@ -18,7 +18,7 @@
 namespace Seeren\Container\Resolver\Constructor;
 
 use Seeren\Container\Exception\ContainerException;
-use Seeren\Container\Exception\NoFoundException;
+use Seeren\Container\Exception\NotFoundException;
 use Seeren\Container\Resolver\ResolverInterface;
 use Seeren\Container\Cache\CacheInterface;
 use ReflectionParameter;
@@ -74,7 +74,7 @@ class DocumentationResolver extends AbstractResolver implements
     * @param CacheInterface $cache container
     * @return null|mixed object in argument
     *
-    * @throws NoFoundException for no found service
+    * @throws NotFoundException for no found service
     * @throws ContainerException for error
     */
    protected final function getArg(
@@ -87,8 +87,8 @@ class DocumentationResolver extends AbstractResolver implements
                        $param->getDeclaringFunction()->getDocComment()))
                 ? $this->resolve($className, $cache)
                 : null;
-       } catch (NoFoundException $e) {
-           throw new NoFoundException(
+       } catch (NotFoundException $e) {
+           throw new NotFoundException(
                "Can't use documentation for " . $param . ": "
              . $e->getMessage());
        } catch (Throwable $e) {

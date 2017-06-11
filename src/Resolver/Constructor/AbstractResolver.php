@@ -19,7 +19,7 @@ namespace Seeren\Container\Resolver\Constructor;
 
 use Seeren\Container\Cache\CacheInterface;
 use Seeren\Container\Exception\ContainerException;
-use Seeren\Container\Exception\NoFoundException;
+use Seeren\Container\Exception\NotFoundException;
 use ReflectionClass;
 use ReflectionParameter;
 use ReflectionException;
@@ -43,7 +43,7 @@ abstract class AbstractResolver
      * @param CacheInterface $cache container
      * @return null|mixed object in argument
      *
-     * @throws NoFoundException for no found service
+     * @throws NotFoundException for no found service
      * @throws ContainerException for error
      */
     abstract protected function getArg(
@@ -65,7 +65,7 @@ abstract class AbstractResolver
     * @param string $className service id
     * @return ReflectionClass reflection
     *
-    * @throws NoFoundException for no found service
+    * @throws NotFoundException for no found service
     * @throws ContainerException for error
     */
    protected final function getReflection(string $className): ReflectionClass
@@ -73,7 +73,7 @@ abstract class AbstractResolver
        try {
            $reflexion = new ReflectionClass($className);
        } catch (ReflectionException $e) {
-           throw new NoFoundException(
+           throw new NotFoundException(
                "Can't get reflection for " . $className . ": not found");
        }
        if (!$reflexion->isInstantiable()) {
@@ -90,7 +90,7 @@ abstract class AbstractResolver
     * @param CacheInterface $cache service
     * @return mixed service or null
     *
-    * @throws NoFoundException for no found service
+    * @throws NotFoundException for no found service
     * @throws ContainerException for error
     */
    public final function resolve(
@@ -111,8 +111,8 @@ abstract class AbstractResolver
                $cache->set($className, $instance);
            }
            return $instance;
-       } catch (NoFoundException $e) {
-           throw new NoFoundException(
+       } catch (NotFoundException $e) {
+           throw new NotFoundException(
                "Can't resolve " . $className . ": " . $e->getMessage());
        } catch (Throwable $e) {
            throw new ContainerException(
