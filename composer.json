@@ -1,7 +1,7 @@
 {
     "name": "seeren/container",
-    "description": "Psr 11 implementation, resolve and cache dependencies",
-    "keywords": ["psr-11", "resolver", "provider" ,"container", "dependency-injection"],
+    "description": "Resolve and cache dependencies",
+    "keywords": ["psr-11", "container", "dependency-injection", "resolver", "provider"],
     "type": "library",
     "license": "MIT",
     "authors": [
@@ -18,11 +18,16 @@
     },
     "autoload": {
       "psr-4": {
-		"Seeren\\Container\\": "src/",
+		"Seeren\\Container\\": "src/"
+      }
+    },
+    "autoload-dev": {
+      "psr-4": {
 		"Seeren\\Container\\Test\\": "test/"
       }
     },
     "require-dev": {
-        "phpunit/phpunit": "6.1"
+        "phpunit/phpunit": "6.1.*",
+        "satooshi/php-coveralls": "dev-master"
     }
 }
