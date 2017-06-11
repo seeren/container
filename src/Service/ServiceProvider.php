@@ -58,18 +58,5 @@ abstract class ServiceProvider implements ServiceInterface
        return $this;
    }
 
-   /**
-    * Unregister container
-    *
-    * @param CacheInterface $container cache container
-    * @return ServiceInterface provider
-    */
-   public final function unregister(CacheInterface $container): ServiceInterface
-   {
-       foreach (array_keys($this->service) as $key) {
-           $container->remove($key);
-       }
-       return $this;
-   }
 
 }

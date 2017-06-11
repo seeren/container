@@ -35,12 +35,4 @@ interface ServiceInterface
     */
    public function register(CacheInterface $container): self;
 
-   /**
-    * Unregister container
-    *
-    * @param CacheInterface $container cache container
-    * @return ServiceInterface self
-    */
-   public function unregister(CacheInterface $container): self;
-
 }

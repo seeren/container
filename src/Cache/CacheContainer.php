@@ -110,16 +110,4 @@ class CacheContainer implements CacheInterface, ContainerInterface
        return $this;
    }
 
-   /**
-    * Unregister service
-    *
-    * @param ServiceInterface $service service provider
-    * @return CacheInterface container
-    */
-   public final function unregister(ServiceInterface $service): CacheInterface
-   {
-       $service->unregister($this);
-       return $this;
-   }
-
 }
