@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file contain Seeren\Container\Cache\Test\CacheContainerTest class
+ * This file contain Seeren\Container\Test\Cache\CacheContainerTest class
  *     __
  *    / /__ __ __ __ __ __
  *   / // // // // // // /
@@ -13,7 +13,7 @@
  * @version 2.0.1
  */
 
-namespace Seeren\Container\Cache\Test;
+namespace Seeren\Container\Test\Cache;
 
 use Psr\Container\ContainerInterface;
 use Seeren\Container\Cache\CacheContainer;
@@ -39,7 +39,7 @@ class CacheContainerTest extends AbstractContainerTest
     */
    protected function getContainer(): ContainerInterface
    {
-       $container = ($this->createMock(CacheContainer::class));
+       $container = $this->createMock(CacheContainer::class);
        $container->__construct();
        $container->set(Foo::class, function () {
            return new Foo;
