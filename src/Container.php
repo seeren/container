@@ -28,6 +28,7 @@ use Throwable;
  * 
  * @category Seeren
  * @package Container
+ * @see http://www.php-fig.org/psr/psr-11/
  */
 class Container implements ContainerInterface, CacheInterface, ResolverInterface
 {

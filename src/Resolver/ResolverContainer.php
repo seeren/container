@@ -10,6 +10,7 @@
  *
  * @copyright (c) Cyril Ichti <consultant@seeren.fr>
  * @link http://www.seeren.fr/ Seeren
+ * @link https://github.com/seeren/container
  * @version 1.1.1
  */
 
@@ -27,6 +28,7 @@ use Seeren\Container\Cache\CacheInterface;
  * @category Seeren
  * @package Container
  * @subpackage Resolver
+ * @see http://www.php-fig.org/psr/psr-11/
  */
 class ResolverContainer implements ResolverInterface, ContainerInterface
 {

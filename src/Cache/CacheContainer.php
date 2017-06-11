@@ -10,6 +10,7 @@
  *
  * @copyright (c) Cyril Ichti <consultant@seeren.fr>
  * @link http://www.seeren.fr/ Seeren
+ * @link https://github.com/seeren/container
  * @version 1.1.2
  */
 
@@ -27,6 +28,7 @@ use Throwable;
  * @category Seeren
  * @package Container
  * @subpackage Cache
+ * @see http://www.php-fig.org/psr/psr-11/
  */
 class CacheContainer implements CacheInterface, ContainerInterface
 {
