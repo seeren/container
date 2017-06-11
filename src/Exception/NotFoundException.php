@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file contain Seeren\Container\Exception\NoFoundException class
+ * This file contain Seeren\Container\Exception\NotFoundException class
  *     __
  *    / /__ __ __ __ __ __
  *   / // // // // // // /
@@ -25,11 +25,11 @@ use Exception;
  * @package Container
  * @subpackage Exception
  */
-class NoFoundException extends Exception implements PsrNotFoundException
+class NotFoundException extends Exception implements PsrNotFoundException
 {
 
    /**
-    * Construct NoFoundException
+    * Construct NotFoundException
     * 
     * @param string $message message
     * @param int $code code

@@ -17,7 +17,7 @@ namespace Seeren\Container\Cache;
 
 use Psr\Container\ContainerInterface;
 use Seeren\Container\Service\ServiceInterface;
-use Seeren\Container\Exception\NoFoundException;
+use Seeren\Container\Exception\NotFoundException;
 use Seeren\Container\Exception\ContainerException;
 use Throwable;
 
@@ -53,13 +53,13 @@ class CacheContainer implements CacheInterface, ContainerInterface
     * @param string $className service id
     * @return mixed service
     *
-    * @throws NoFoundException for no found service
+    * @throws NotFoundException for no found service
     * @throws ContainerException for error
     */
    public final function get($className)
    {
        if (!$this->has($className)) {
-           throw new NoFoundException(
+           throw new NotFoundException(
                "Can't get " . $className . ": not found");
        } else if (is_callable($this->service[$className])) {
            $args = func_get_args();
