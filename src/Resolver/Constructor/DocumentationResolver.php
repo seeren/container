@@ -12,13 +12,11 @@
  * @copyright (c) Cyril Ichti <consultant@seeren.fr>
  * @link http://www.seeren.fr/ Seeren
  * @link https://github.com/seeren/container
- * @version 1.2.1
+ * @version 1.2.2
  */
 
 namespace Seeren\Container\Resolver\Constructor;
 
-use Seeren\Container\Exception\ContainerException;
-use Seeren\Container\Exception\NotFoundException;
 use Seeren\Container\Resolver\ResolverInterface;
 use Seeren\Container\Cache\CacheInterface;
 use ReflectionParameter;
@@ -50,9 +48,6 @@ class DocumentationResolver extends AbstractResolver implements
     * @param ReflectionParameter $param reflected argument
     * @param CacheInterface $cache container
     * @return null|mixed object in argument
-    *
-    * @throws NotFoundException for no found service
-    * @throws ContainerException for error
     */
    protected final function getArg(
        ReflectionParameter $param,
