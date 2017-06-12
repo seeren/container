@@ -9,7 +9,7 @@
  *    /_//_//_//_//_//_/
  *
  * @copyright (c) Cyril Ichti <consultant@seeren.fr>
- * @link http://www.seeren.fr/ Seeren
+ * @link https://github.com/seeren/container
  * @version 1.0.1
  */
 
