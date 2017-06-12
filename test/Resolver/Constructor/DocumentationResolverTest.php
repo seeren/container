@@ -17,7 +17,6 @@ namespace Seeren\Container\Test\Resolver\Constructor;
 
 
 use Seeren\Container\Cache\CacheContainer;
-use Seeren\Container\Test\Resolver\AbstractResolverTest;
 use Seeren\Container\Resolver\Constructor\DocumentationResolver;
 use Seeren\Container\Resolver\ResolverInterface;
 use Seeren\Container\Cache\CacheInterface;
@@ -210,7 +209,7 @@ class Qux
     /**
      * @param \Seeren\Container\Test\Resolver\Bar $bar
      */
-    public function __construct(\Seeren\Container\Test\Resolver\Bar $bar)
+    public function __construct(Bar $bar)
     {
     }
 
@@ -222,7 +221,7 @@ class Quux
     /**
      * Not documented
      */
-    public function __construct(\Seeren\Container\Test\Resolver\Bar $bar = null)
+    public function __construct(Bar $bar = null)
     {
     }
 
@@ -234,7 +233,7 @@ class Corge
     /**
      * @param \BarNotFound $bar
      */
-    public function __construct(\Seeren\Container\Test\Resolver\Bar $bar)
+    public function __construct(Bar $bar)
     {
     }
 
@@ -244,9 +243,9 @@ class Grault
 {
 
     /**
-     * @param \Seeren\Container\Test\Resolver\Foo $foo
+     * @param \Seeren\Container\Test\Resolver\Constructor\Foo $foo
      */
-    public function __construct(\Seeren\Container\Test\Resolver\Foo $foo)
+    public function __construct(Foo $foo)
     {
     }
 
@@ -257,11 +256,9 @@ class Garply
 
     /**
      * @param \Seeren\Container\Test\Resolver\Constructor\Qux $qux
-     * @param \Seeren\Container\Test\Resolver\Bar $bar
+     * @param \Seeren\Container\Test\Resolver\Constructor\Bar $bar
      */
-    public function __construct(
-        Qux $qux,
-        \Seeren\Container\Test\Resolver\Bar $bar)
+    public function __construct(Qux $qux, Bar $bar)
     {
     }
 

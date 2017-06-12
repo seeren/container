@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file contain Seeren\Container\Test\Resolver\AbstractResolverTest class
+ * This file contain Seeren\Container\Test\Resolver\Constructor\AbstractResolverTest class
  *     __
  *    / /__ __ __ __ __ __
  *   / // // // // // // /
@@ -13,7 +13,7 @@
  * @version 1.0.1
  */
 
-namespace Seeren\Container\Test\Resolver;
+namespace Seeren\Container\Test\Resolver\Constructor;
 
 use Seeren\Container\Resolver\ResolverInterface;
 use Seeren\Container\Cache\CacheInterface;
@@ -24,7 +24,7 @@ use Exception;
  * 
  * @category Seeren
  * @package Container
- * @subpackage Test\Resolver
+ * @subpackage Test\Resolver\Constructor
  * @abstract
  */
 abstract class AbstractResolverTest extends \PHPUnit\Framework\TestCase

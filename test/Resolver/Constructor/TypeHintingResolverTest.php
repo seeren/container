@@ -17,7 +17,6 @@ namespace Seeren\Container\Test\Resolver\Constructor;
 
 
 use Seeren\Container\Cache\CacheContainer;
-use Seeren\Container\Test\Resolver\AbstractResolverTest;
 use Seeren\Container\Resolver\Constructor\TypeHintingResolver;
 use Seeren\Container\Resolver\ResolverInterface;
 use Seeren\Container\Cache\CacheInterface;
@@ -166,7 +165,7 @@ class TypeHintingResolverTest extends AbstractResolverTest
 class Waldo
 {
 
-    public function __construct(\Seeren\Container\Test\Resolver\Bar $bar)
+    public function __construct(Bar $bar)
     {
     }
 
@@ -175,9 +174,7 @@ class Waldo
 class Fred
 {
 
-    public function __construct(
-        Waldo $waldo,
-        \Seeren\Container\Test\Resolver\Bar $bar)
+    public function __construct(Waldo $waldo, Bar $bar)
     {
     }
 
