@@ -12,7 +12,7 @@
  * @copyright (c) Cyril Ichti <consultant@seeren.fr>
  * @link http://www.seeren.fr/ Seeren
  * @link https://github.com/seeren/container
- * @version 1.1.2
+ * @version 1.2.1
  */
 
 namespace Seeren\Container\Resolver\Constructor;
@@ -45,29 +45,6 @@ class DocumentationResolver extends AbstractResolver implements
    }
 
    /**
-    * Get doc comment class name
-    *
-    * @param string $paramName argument name
-    * @param string $docComment doc comment
-    * @return string class name
-    */
-   private final function getClassName(
-       string $paramName,
-       string $docComment): string
-   {
-       $match = [];
-       $delimiter = "@param";
-       $type = "string|int|bool|float|array|callable";
-       preg_match(
-           '/^.+' . $delimiter . '\s+(?!' . $type
-         . ')([A-Za-z0-9\\\]{1,})\s+\$'
-         . $paramName . '/m',
-           $docComment,
-           $match);
-       return array_key_exists(1, $match) ? $match[1] : "";
-   }
-
-   /**
     * Get parameter argument
     *
     * @param ReflectionParameter $param reflected argument
@@ -81,21 +58,19 @@ class DocumentationResolver extends AbstractResolver implements
        ReflectionParameter $param,
        CacheInterface $cache = null)
    {
-       try {
-           return ($className = $this->getClassName(
-                       $param->name,
-                       $param->getDeclaringFunction()->getDocComment()))
-                ? $this->resolve($className, $cache)
-                : null;
-       } catch (NotFoundException $e) {
-           throw new NotFoundException(
-               "Can't use documentation for " . $param . ": "
-             . $e->getMessage());
-       } catch (Throwable $e) {
-           throw new ContainerException(
-               "Can't use documentation for " . $param . ": "
-             . $e->getMessage());
+       $match = [];
+       $delimiter = "@param";
+       $type = "string|int|bool|float|array|callable";
+       preg_match(
+           '/^.+' . $delimiter . '\s+(?!' . $type
+         . ')([A-Za-z0-9\\\]{1,})\s+\$'
+         . $param->name . '/m',
+           $param->getDeclaringFunction()->getDocComment(),
+           $match);
+       if (array_key_exists(1, $match)) {
+           return $this->resolve($match[1], $cache);
        }
+
    }
 
 }
