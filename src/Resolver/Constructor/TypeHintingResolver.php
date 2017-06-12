@@ -12,13 +12,11 @@
  * @copyright (c) Cyril Ichti <consultant@seeren.fr>
  * @link http://www.seeren.fr/ Seeren
  * @link https://github.com/seeren/container
- * @version 1.1.3
+ * @version 1.1.4
  */
 
 namespace Seeren\Container\Resolver\Constructor;
 
-use Seeren\Container\Exception\ContainerException;
-use Seeren\Container\Exception\NoFoundException;
 use Seeren\Container\Resolver\ResolverInterface;
 use Seeren\Container\Cache\CacheInterface;
 use ReflectionParameter;
@@ -49,26 +47,15 @@ class TypeHintingResolver extends AbstractResolver implements ResolverInterface
     * @param ReflectionParameter $param reflected argument
     * @param CacheInterface $cache container
     * @return null|mixed object in argument
-    *
-    * @throws NoFoundException for no found service
-    * @throws ContainerException for error
     */
    protected final function getArg(
        ReflectionParameter $param,
        CacheInterface $cache = null)
    {
-       try {
-           return (!$param->isOptional()
-               && ($type = $param->getType()) && !$type->isBuiltin())
+           return !$param->isOptional()
+               && ($type = $param->getType()) && !$type->isBuiltin()
                 ? $this->resolve($type->__toString(), $cache)
                 : null;
-       } catch (NoFoundException $e) {
-           throw new NoFoundException(
-               "Can't typehint for " . $param . ": " . $e->getMessage());
-       } catch (Throwable $e) {
-           throw new ContainerException(
-               "Can't typehint for " . $param . ": " . $e->getMessage());
-       }
    }
 
 }
