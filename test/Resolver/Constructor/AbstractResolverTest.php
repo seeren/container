@@ -17,6 +17,7 @@ namespace Seeren\Container\Test\Resolver\Constructor;
 
 use Seeren\Container\Resolver\ResolverInterface;
 use Seeren\Container\Cache\CacheInterface;
+use Exception;
 
 /**
  * Class for test ResolverInterface
