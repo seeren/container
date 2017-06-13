@@ -10,7 +10,7 @@
  *
  * @copyright (c) Cyril Ichti <consultant@seeren.fr>
  * @link https://github.com/seeren/container
- * @version 2.0.1
+ * @version 2.0.2
  */
 
 namespace Seeren\Container\Test\Cache;
@@ -94,7 +94,7 @@ class CacheContainerTest extends AbstractContainerTest
     */
    public function testHasTrue()
    {
-       parent::assertHasTrue();
+       $this->assertTrue($this->getContainer()->has(Bar::class));
    }
 
    /**

@@ -10,7 +10,7 @@
  *
  * @copyright (c) Cyril Ichti <consultant@seeren.fr>
  * @link https://github.com/seeren/container
- * @version 1.0.1
+ * @version 1.1.1
  */
 
 namespace Seeren\Container\Test;
@@ -58,14 +58,6 @@ abstract class AbstractContainerTest extends \PHPUnit\Framework\TestCase
    protected function assertGet()
    {
        $this->assertTrue($this->getContainer()->get(Bar::class) instanceof Bar);
-   }
-
-   /**
-    * Assert has true
-    */
-   protected function assertHasTrue()
-   {
-       $this->assertTrue($this->getContainer()->has(Bar::class));
    }
 
    /**

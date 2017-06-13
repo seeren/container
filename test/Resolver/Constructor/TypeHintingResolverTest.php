@@ -23,7 +23,7 @@ use Seeren\Container\Cache\CacheInterface;
 use ReflectionClass;
 
 /**
- * Class for test CacheContainer
+ * Class for test TypeHintingResolver
  * 
  * @category Seeren
  * @package Container

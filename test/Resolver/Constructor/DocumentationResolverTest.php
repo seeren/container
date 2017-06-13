@@ -23,7 +23,7 @@ use Seeren\Container\Cache\CacheInterface;
 use ReflectionClass;
 
 /**
- * Class for test CacheContainer
+ * Class for test DocumentationResolver
  * 
  * @category Seeren
  * @package Container
@@ -207,7 +207,7 @@ class Qux
 {
     
     /**
-     * @param \Seeren\Container\Test\Resolver\Bar $bar
+     * @param \Seeren\Container\Test\Resolver\Constructor\Bar $bar
      */
     public function __construct(Bar $bar)
     {
