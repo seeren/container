@@ -45,7 +45,7 @@ Providers are configuration setup, container can register them
 $container->register(new MyProvider);
 $foo = $container->get("foo");
 ```
-A custom provider have to extends ServiceProvider and add element to his service attribut
+A custom provider have to extends ServiceProvider and add elements to his service attribut
 ```php
 class MyProvider extends ServiceProvider
 {
