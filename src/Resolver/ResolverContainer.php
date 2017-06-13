@@ -18,7 +18,7 @@ namespace Seeren\Container\Resolver;
 
 use Psr\Container\ContainerInterface;
 use Seeren\Container\Exception\ContainerException;
-use Seeren\Container\Exception\NoFoundException;
+use Seeren\Container\Exception\NotFoundException;
 use Seeren\Container\Resolver\ResolverInterface;
 use Seeren\Container\Cache\CacheInterface;
 
@@ -51,14 +51,14 @@ class ResolverContainer implements ResolverInterface, ContainerInterface
     * @param CacheInterface $cache cache container
     * @return mixed service
     *
-    * @throws NoFoundException for no found service
+    * @throws NotFoundException for no found service
     * @throws ContainerException for error
     */
    public final function get($className, CacheInterface $cache = null)
    {
        try {
            return $this->resolve($className, $cache);
-       } catch (NoFoundException $e) {
+       } catch (NotFoundException $e) {
            throw $e;
        } catch (ContainerException $e) {
            throw $e;
@@ -83,14 +83,14 @@ class ResolverContainer implements ResolverInterface, ContainerInterface
     * @param CacheInterface $cache cache container
     * @return mixed service or null
     * 
-    * @throws NoFoundException for no found service
+    * @throws NotFoundException for no found service
     * @throws ContainerException for error
     */
    public final function resolve(string $className, CacheInterface $cache = null)
    {
        try {
            return $this->resolver->resolve($className, $cache);
-       } catch (NoFoundException $e) {
+       } catch (NotFoundException $e) {
            throw $e;
        } catch (ContainerException $e) {
            throw $e;
