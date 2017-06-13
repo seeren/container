@@ -1,52 +1,88 @@
- [![Codacy Badge](https://api.codacy.com/project/badge/Grade/c11e000dd32848d6bf08fbcbe4133a4d)](https://www.codacy.com/app/seeren/container?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=seeren/container&amp;utm_campaign=Badge_Grade) [![Build Status](https://travis-ci.org/seeren/container.svg?branch=master)](https://travis-ci.org/seeren/container) [![GitHub license](https://img.shields.io/badge/license-MIT-orange.svg)](https://raw.githubusercontent.com/seeren/container/master/LICENSE) [![Packagist](https://img.shields.io/packagist/v/seeren/container.svg)](https://packagist.org/packages/seeren/container#v1.2) [![Packagist](https://img.shields.io/packagist/dt/seeren/container.svg)](https://packagist.org/packages/seeren/container/stats)
+# container
+ [![Build Status](https://travis-ci.org/seeren/container.svg?branch=master)](https://travis-ci.org/seeren/container) [![Coverage Status](https://coveralls.io/repos/github/seeren/container/badge.svg?branch=master)](https://coveralls.io/github/seeren/container?branch=master) [![Packagist](https://img.shields.io/packagist/dt/seeren/container.svg)](https://packagist.org/packages/seeren/container/stats) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/4a0463fb5a084be5bda68e4e36d7c7ac)](https://www.codacy.com/app/seeren/container?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=seeren/container&amp;utm_campaign=Badge_Grade) [![Packagist](https://img.shields.io/packagist/v/seeren/container.svg)](https://packagist.org/packages/seeren/container#) [![Packagist](https://img.shields.io/packagist/l/seeren/log.svg)](LICENSE)
 
-# Seeren\Container\
-Psr 11 implementation, resolve and cache dependencies.
-Can be used for resolve whole app, manage persistence or register providers.
+**Resolve and cache dependencies**
 
-## Seeren\Container\Container
-Container need resolver and cache at construction then provide get and has methods. Resolver is a factory like using reflection whereas Cache manage persistence of services.
-```php
-$container = new Container(
-    new TypeHintingResolver(),
-    new CacheContainer());
-$controller = $container->get(MyController::class);
-```
-
-## Seeren\Container\Resolver\ResolverContainer
-Differents resolvers can try to return new service.
-```php
-$controller = (new TypeHintingResolver)->resolve(MyController::class);
-```
-
-## Seeren\Container\Cache\CacheContainer
-Cache manage service persistence for a container.
-```php
-$cache = new CacheContainer;
-$cache->set("foo", function ($c) { return $c->get("bar"); });
-$cache->set("bar", function ($c) { return "bar"; });
-$bar = $cache->get("foo");
-```
-
-## Seeren\Container\Service\ServiceProvider
-Cache container can register providers.
-```php
-$cache = new CacheContainer;
-$cache->register($myServiceProvider);
-```
+## Features
+* Resolve without configuration
+* Resolve with @param
+* Resolve with providers
 
 ## Installation
-Require this package with composer
+Require this package with [composer](https://getcomposer.org/)
 ```
 composer require seeren/container dev-master
 ```
 
-## Run the tests
-Run with phpunit after install dependencies
+## Container Usage
+
+#### `Seeren\Container\Container`
+Container need a resolver and a cache at construction, the resolver is a factory like whereas the cache manage persistence
+```php
+$container = new Container(
+    new TypeHintingResolver(),
+    new CacheContainer());
 ```
-composer update
-phpunit
+A fully qualified class name can be resolved without configuration
+```php
+$foo = $container->get(Foo::class);
+```
+The cache manage service persistence and can be used as configuration
+```php
+$container->set("foo", function ($c) {
+    return new Foo($c->get("bar"));
+});
+$container->set("bar", function ($c) {
+    return new Bar;
+});
+$foo = $container->get("foo");
 ```
 
-## Authors
-* **Cyril Ichti** - [www.seeren.fr](http://www.seeren.fr)
+## Provider Usage
+#### `Seeren\Container\Service\ServiceProvider`
+Providers are configuration setup, container can register them
+```php
+$container->register(new MyProvider);
+$foo = $container->get("foo");
+```
+A custom provider have to extends ServiceProvider and add element to his service attribut
+```php
+class MyProvider extends ServiceProvider
+{
+    public function __construct()
+    {
+        parent::__construct();
+        $this->service["foo"] = function ($c) {
+            return new Foo($c->get("bar"));
+        }
+        $this->service["bar"] = function ($c) {
+            return new Bar;
+        }
+    }
+}
+```
+
+## Run Unit tests
+Install dependencies
+```
+composer update
+```
+Run [phpunit](https://phpunit.de/) with [Xdebug](https://xdebug.org/) enabled and [OPcache](http://php.net/manual/fr/book.opcache.php) disabled for coverage
+```
+./vendor/bin/phpunit
+```
+## Run Coverage
+Install dependencies
+```
+composer update
+```
+Run [coveralls](https://coveralls.io/) for check coverage
+```
+./vendor/bin/coveralls -v
+```
+
+##  Contributors
+* **Cyril Ichti** - *Initial work* - [seeren](https://github.com/seeren)
+
+## License
+This project is licensed under the **MIT License** - see the [license](LICENSE) file for details.
