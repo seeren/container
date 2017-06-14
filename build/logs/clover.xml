@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1497371489">
-  <project timestamp="1497371489">
+<coverage generated="1497473832">
+  <project timestamp="1497473832">
     <package name="Seeren\Container\Cache">
       <file name="C:\xampp\htdocs\seeren-dev-master\container\src/Cache/CacheContainer.php">
         <class name="CacheContainer" namespace="Seeren\Container\Cache" fullPackage="Container.Cache" category="Seeren" package="Container" subpackage="Cache">
