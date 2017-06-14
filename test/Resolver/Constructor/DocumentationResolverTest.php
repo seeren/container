@@ -10,7 +10,7 @@
  *
  * @copyright (c) Cyril Ichti <consultant@seeren.fr>
  * @link https://github.com/seeren/container
- * @version 2.0.1
+ * @version 2.0.2
  */
 
 namespace Seeren\Container\Test\Resolver\Constructor;
@@ -62,7 +62,7 @@ class DocumentationResolverTest extends AbstractResolverTest
      */
     public function testResolveWithoutDependencie()
     {
-       parent::assertResolveWithoutDependencie();
+       parent::testResolveWithoutDependencie();
     }
 
    /**
@@ -75,7 +75,7 @@ class DocumentationResolverTest extends AbstractResolverTest
     */
    public function testResolveNotFoundException()
    {
-       parent::assertResolveNotFoundException();
+       parent::testResolveNotFoundException();
    }
 
    /**
@@ -88,7 +88,7 @@ class DocumentationResolverTest extends AbstractResolverTest
     */
    public function testResolveContainerExceptionInterface()
    {
-       parent::assertResolveContainerExceptionInterface();
+       parent::testResolveContainerExceptionInterface();
    }
 
    /**
@@ -101,7 +101,7 @@ class DocumentationResolverTest extends AbstractResolverTest
     */
    public function testResolveAbstract()
    {
-       parent::assertResolveAbstract();
+       parent::testResolveAbstract();
    }
 
    /**
@@ -116,7 +116,7 @@ class DocumentationResolverTest extends AbstractResolverTest
     */
    public function testResolveAndCache()
    {
-       parent::assertResolveAndCache();
+       parent::testResolveAndCache();
    }
 
    /**

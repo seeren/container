@@ -10,7 +10,7 @@
  *
  * @copyright (c) Cyril Ichti <consultant@seeren.fr>
  * @link https://github.com/seeren/container
- * @version 1.0.1
+ * @version 1.0.2
  */
 
 namespace Seeren\Container\Test\Resolver\Constructor;
@@ -45,42 +45,42 @@ abstract class AbstractResolverTest extends \PHPUnit\Framework\TestCase
    abstract protected function getCache(): CacheInterface;
 
    /**
-    * Assert resolve without dependencies
+    * Test resolve without dependencies
     */
-   protected function assertResolveWithoutDependencie()
+   public function testResolveWithoutDependencie()
    {
        $this->assertTrue($this->getResolver()->resolve(Bar::class)
               instanceof Bar);
    }
 
    /**
-    * Assert resolve NotFoundException
+    * Test resolve NotFoundException
     */
-   protected function assertResolveNotFoundException()
+   public function testResolveNotFoundException()
    {
        $this->getResolver()->resolve("foo");
    }
 
    /**
-    * Assert resolve ContainerExceptionInterface
+    * Test resolve ContainerExceptionInterface
     */
-   protected function assertResolveContainerExceptionInterface()
+   public function testResolveContainerExceptionInterface()
    {
        $this->getResolver()->resolve(Foo::class);
    }
 
    /**
-    * Assert resolve abstract
+    * Test resolve abstract
     */
-   protected function assertResolveAbstract()
+   public function testResolveAbstract()
    {
        $this->getResolver()->resolve(Baz::class);
    }
 
    /**
-    * Assert resolve and cache
+    * Test resolve and cache
     */
-   protected function assertResolveAndCache()
+   public function testResolveAndCache()
    {
        $cache = $this->getCache();
        $this->getResolver()->resolve(Bar::class, $cache);
@@ -88,7 +88,7 @@ abstract class AbstractResolverTest extends \PHPUnit\Framework\TestCase
    }
 
    /**
-    * Assert use cache
+    * Test use cache
     */
    protected function assertUseCache()
    {

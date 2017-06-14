@@ -10,7 +10,7 @@
  *
  * @copyright (c) Cyril Ichti <consultant@seeren.fr>
  * @link https://github.com/seeren/container
- * @version 1.0.1
+ * @version 1.0.2
  */
 
 namespace Seeren\Container\Test\Resolver;
@@ -61,7 +61,7 @@ class ResolverContainerTest extends AbstractContainerTest
     */
    public function testGetNotFoundException()
    {
-       parent::assertGetNotFoundException();
+       parent::testGetNotFoundException();
    }
 
    /**
@@ -78,7 +78,7 @@ class ResolverContainerTest extends AbstractContainerTest
     */
    public function testGetContainerExceptionInterface()
    {
-       parent::assertGetContainerExceptionInterface();
+       parent::testGetContainerExceptionInterface();
    }
 
    /**
@@ -95,7 +95,7 @@ class ResolverContainerTest extends AbstractContainerTest
     */
    public function testGet()
    {
-       parent::assertGet();
+       parent::testGet();
    }
 
    /**
@@ -106,7 +106,7 @@ class ResolverContainerTest extends AbstractContainerTest
     */
    public function testHasFalse()
    {
-       parent::assertHasFalse();
+       parent::testHasFalse();
    }
 
    /**

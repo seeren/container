@@ -10,7 +10,7 @@
  *
  * @copyright (c) Cyril Ichti <consultant@seeren.fr>
  * @link https://github.com/seeren/container
- * @version 1.1.1
+ * @version 1.1.2
  */
 
 namespace Seeren\Container\Test;
@@ -32,38 +32,38 @@ abstract class AbstractContainerTest extends \PHPUnit\Framework\TestCase
    /**
     * Get Container
     * 
-    * @return ControllerInterface controller
+    * @return ContainerInterface controller
     */
    abstract protected function getContainer(): ContainerInterface;
 
    /**
-    * Assert get NotFoundException
+    * Test get NotFoundException
     */
-   protected function assertGetNotFoundException()
+   public function testGetNotFoundException()
    {
        $this->getContainer()->get("foo");
    }
 
    /**
-    * Assert get ContainerExceptionInterface
+    * Test get ContainerExceptionInterface
     */
-   protected function assertGetContainerExceptionInterface()
+   public function testGetContainerExceptionInterface()
    {
        $this->getContainer()->get(Foo::class);
    }
 
    /**
-    * Assert get
+    * Test get
     */
-   protected function assertGet()
+   public function testGet()
    {
        $this->assertTrue($this->getContainer()->get(Bar::class) instanceof Bar);
    }
 
    /**
-    * Assert has false
+    * Test has false
     */
-   protected function assertHasFalse()
+   public function testHasFalse()
    {
        $this->assertFalse($this->getContainer()->has(Baz::class));
    }

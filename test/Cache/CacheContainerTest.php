@@ -10,7 +10,7 @@
  *
  * @copyright (c) Cyril Ichti <consultant@seeren.fr>
  * @link https://github.com/seeren/container
- * @version 2.0.2
+ * @version 2.0.3
  */
 
 namespace Seeren\Container\Test\Cache;
@@ -60,7 +60,7 @@ class CacheContainerTest extends AbstractContainerTest
     */
    public function testGetNotFoundException()
    {
-       parent::assertGetNotFoundException();
+       parent::testGetNotFoundException();
    }
 
    /**
@@ -73,7 +73,7 @@ class CacheContainerTest extends AbstractContainerTest
     */
    public function testGetContainerExceptionInterface()
    {
-       parent::assertGetContainerExceptionInterface();
+       parent::testGetContainerExceptionInterface();
    }
 
    /**
@@ -84,7 +84,7 @@ class CacheContainerTest extends AbstractContainerTest
     */
    public function testGet()
    {
-       parent::assertGet();
+       parent::testGet();
    }
 
    /**
@@ -104,7 +104,7 @@ class CacheContainerTest extends AbstractContainerTest
     */
    public function testHasFalse()
    {
-       parent::assertHasFalse();
+       parent::testHasFalse();
    }
 
    /**
