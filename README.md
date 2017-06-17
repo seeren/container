@@ -2,7 +2,7 @@
  [![Build Status](https://travis-ci.org/seeren/container.svg?branch=master)](https://travis-ci.org/seeren/container) [![Coverage Status](https://coveralls.io/repos/github/seeren/container/badge.svg?branch=master)](https://coveralls.io/github/seeren/container?branch=master) [![Packagist](https://img.shields.io/packagist/dt/seeren/container.svg)](https://packagist.org/packages/seeren/container/stats) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/4a0463fb5a084be5bda68e4e36d7c7ac)](https://www.codacy.com/app/seeren/container?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=seeren/container&amp;utm_campaign=Badge_Grade) [![Packagist](https://img.shields.io/packagist/v/seeren/container.svg)](https://packagist.org/packages/seeren/container#) [![Packagist](https://img.shields.io/packagist/l/seeren/log.svg)](LICENSE)
 
 **Resolve and cache dependencies**
-
+> This package contain implementations of the [PSR-11 Container interface](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-11-container.md)
 ## Features
 * Resolve without configuration
 * Resolve with @param
@@ -17,7 +17,7 @@ composer require seeren/container dev-master
 ## Container Usage
 
 #### `Seeren\Container\Container`
-Container need a resolver and a cache at construction, the resolver is a factory like whereas the cache manage persistence. In this configuration, resolved objects can be shared with all application components. Custom container choosing type hinting or documentation resolver
+The container need a resolver and a cache at construction. In this configuration, resolved objects can be shared with all application components. You can customize the container choosing a resolver at construction
 ```php
 $container = new Container(
     new TypeHintingResolver(),
@@ -31,7 +31,7 @@ If you want an unique instance you can use resolve
 ```php
 $foo = $container->resolve(Foo::class);
 ```
-The container cache manage service persistence and can be used as configuration
+The container cache manage service persistence and can be used as configuration. Every value type is accepted but providing closure, she will be called when service is asked
 ```php
 $container->set("foo", function ($c) {
     return new Foo($c->get("bar"));
@@ -41,7 +41,6 @@ $container->set("bar", function ($c) {
 });
 $foo = $container->get("foo");
 ```
-Every value type is accepted but providing closure, she will be called when service is asked
 
 ## Provider Usage
 #### `Seeren\Container\Service\ServiceProvider`
@@ -49,7 +48,7 @@ Providers are configuration setup, container can register them
 ```php
 $container->register(new MyProvider);
 ```
-A custom provider have to extends ServiceProvider and add elements to his service attribut
+A custom provider have to extends ServiceProvider and add elements to his service attribut. This container have been made for resolve services quickly without configuration so he do not encourages use of providers
 ```php
 class MyProvider extends ServiceProvider
 {
@@ -65,8 +64,6 @@ class MyProvider extends ServiceProvider
     }
 }
 ```
-This container have been made for resolve services quickly without configuration so he do not encourages use of providers
-
 ## Run Unit tests
 Install dependencies
 ```
