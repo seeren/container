@@ -17,17 +17,21 @@ composer require seeren/container dev-master
 ## Container Usage
 
 #### `Seeren\Container\Container`
-Container need a resolver and a cache at construction, the resolver is a factory like whereas the cache manage persistence
+Container need a resolver and a cache at construction, the resolver is a factory like whereas the cache manage persistence. In this configuration, resolved objects can be shared with all application components. Custom container choosing type hinting or documentation resolver
 ```php
 $container = new Container(
     new TypeHintingResolver(),
     new CacheContainer());
 ```
-A fully qualified class name can be resolved without configuration
+A fully qualified class name can be resolved and shared with others components without configuration
 ```php
 $foo = $container->get(Foo::class);
 ```
-The cache manage service persistence and can be used as configuration
+If you want an unique instance you can use resolve
+```php
+$foo = $container->resolve(Foo::class);
+```
+The container cache manage service persistence and can be used as configuration
 ```php
 $container->set("foo", function ($c) {
     return new Foo($c->get("bar"));
@@ -37,13 +41,13 @@ $container->set("bar", function ($c) {
 });
 $foo = $container->get("foo");
 ```
+Every value type is accepted but providing closure, she will be called when service is asked
 
 ## Provider Usage
 #### `Seeren\Container\Service\ServiceProvider`
 Providers are configuration setup, container can register them
 ```php
 $container->register(new MyProvider);
-$foo = $container->get("foo");
 ```
 A custom provider have to extends ServiceProvider and add elements to his service attribut
 ```php
@@ -61,6 +65,7 @@ class MyProvider extends ServiceProvider
     }
 }
 ```
+This container have been made for resolve services quickly without configuration so he do not encourages use of providers
 
 ## Run Unit tests
 Install dependencies
