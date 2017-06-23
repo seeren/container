@@ -35,7 +35,7 @@ interface ResolverInterface
     * @param CacheInterface $cache cache container
     * @return mixed service or null
     * 
-    * @throws NoFoundException for no found service
+    * @throws NotFoundException for no found service
     * @throws ContainerException for error
     */
    public function resolve(string $className, CacheInterface $cache = null);
