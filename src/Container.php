@@ -10,7 +10,7 @@
  *
  * @copyright (c) Cyril Ichti <consultant@seeren.fr>
  * @link http://www.seeren.fr/ Seeren
- * @version 1.1.3
+ * @version 1.1.4
  */
 
 namespace Seeren\Container;
@@ -71,18 +71,17 @@ class Container implements ContainerInterface, CacheInterface, ResolverInterface
    {
        try {
            return $this->cache->get(... func_get_args());
-       } catch (Throwable $e) {
+       } catch (NotFoundException $e) {
            try {
-               $this->cache->set(
-                   $className,
-                   $this->resolver->resolve($className, $this->cache));
-               return $this->cache->get($className);
+               $service = $this->resolver->resolve($className, $this->cache);
            } catch (NotFoundException $e) {
                throw $e;
            } catch (ContainerException $e) {
                throw $e;
            }
        }
+       $this->cache->set($className, $service);
+       return $this->cache->get($className);
    }
 
    /**
