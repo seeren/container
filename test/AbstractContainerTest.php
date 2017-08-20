@@ -32,7 +32,7 @@ abstract class AbstractContainerTest extends \PHPUnit\Framework\TestCase
    /**
     * Get Container
     * 
-    * @return ContainerInterface controller
+    * @return ContainerInterface container
     */
    abstract protected function getContainer(): ContainerInterface;
 
