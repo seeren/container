@@ -1,17 +1,15 @@
 <?php
 
 /**
- * This file contain Seeren\Container\Service\ServiceProvider class
  *     __
  *    / /__ __ __ __ __ __
  *   / // // // // // // /
  *  /_// // // // // // /
  *    /_//_//_//_//_//_/
  *
- * @copyright (c) Cyril Ichti <consultant@seeren.fr>
- * @link http://www.seeren.fr/ Seeren
+ * @author Cyril Ichti <consultant@seeren.fr>
  * @link https://github.com/seeren/container
- * @version 1.1.1
+ * @version 1.1.2
  */
 
 namespace Seeren\Container\Service;
@@ -31,25 +29,21 @@ abstract class ServiceProvider implements ServiceInterface
 
    protected
        /**
-        * @var array service collection
+        * @var array service
         */
        $service;
 
    /**
-    * Construct ServiceProvider
-    * 
-    * @return null
+    * @param array $service
     */
-   protected function __construct()
+   protected function __construct(array $service = [])
    {
-       $this->service = [];
+       $this->service = service;
    }
 
    /**
-    * Register container
-    *
-    * @param CacheInterface $container cache container
-    * @return ServiceInterface provider
+    * {@inheritDoc}
+    * @see \Seeren\Container\Service\ServiceInterface::register()
     */
    public final function register(CacheInterface $container): ServiceInterface
    {
@@ -58,6 +52,5 @@ abstract class ServiceProvider implements ServiceInterface
        }
        return $this;
    }
-
 
 }
