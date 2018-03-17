@@ -1,14 +1,13 @@
 <?php
 
 /**
- * This file contain Seeren\Container\Test\Resolver\Constructor\AbstractResolverTest class
  *     __
  *    / /__ __ __ __ __ __
  *   / // // // // // // /
  *  /_// // // // // // /
  *    /_//_//_//_//_//_/
  *
- * @copyright (c) Cyril Ichti <consultant@seeren.fr>
+ * @author Cyril Ichti <consultant@seeren.fr>
  * @link https://github.com/seeren/container
  * @version 1.0.2
  */
