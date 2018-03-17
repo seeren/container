@@ -96,8 +96,8 @@ class MyProvider extends ServiceProvider
 	        "bar" => function ($c) {
 	            return new Bar;
 	        },
-        ]}
-	}
+        ])
+    }
 }
 ```
 
