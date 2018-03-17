@@ -10,7 +10,7 @@
  *
  * @copyright (c) Cyril Ichti <consultant@seeren.fr>
  * @link http://www.seeren.fr/ Seeren
- * @version 1.1.4
+ * @version 1.1.5
  */
 
 namespace Seeren\Container;
@@ -21,7 +21,6 @@ use Seeren\Container\Cache\CacheInterface;
 use Seeren\Container\Service\ServiceInterface;
 use Seeren\Container\Exception\NotFoundException;
 use Seeren\Container\Exception\ContainerException;
-use Throwable;
 
 /**
  * Class for represent a container
@@ -44,28 +43,18 @@ class Container implements ContainerInterface, CacheInterface, ResolverInterface
        $service;
 
    /**
-    * Construct Container
-    *      
-    * @param ResolverInterface $resolver resolver
-    * @param CacheInterface $cache cache
-    * @return null
+    * @param ResolverInterface $resolver
+    * @param CacheInterface $cache
     */
-   public function __construct(
-       ResolverInterface $resolver,
-       CacheInterface $cache)
+   public function __construct(ResolverInterface $resolver, CacheInterface $cache)
    {
        $this->resolver = $resolver;
        $this->cache = $cache;
    }
 
    /**
-    * Get service
-    *
-    * @param string $className service id
-    * @return mixed service
-    *
-    * @throws NotFoundException for no found service
-    * @throws ContainerException for error
+    * {@inheritDoc}
+    * @see \Psr\Container\ContainerInterface::get()
     */
    public final function get($className)
    {
@@ -85,10 +74,8 @@ class Container implements ContainerInterface, CacheInterface, ResolverInterface
    }
 
    /**
-    * Has service
-    *
-    * @param string $className service id
-    * @return boolean
+    * {@inheritDoc}
+    * @see \Psr\Container\ContainerInterface::has()
     */
    public final function has($className): bool
    {
@@ -96,14 +83,8 @@ class Container implements ContainerInterface, CacheInterface, ResolverInterface
    }
 
    /**
-    * Resolve service
-    * 
-    * @param string $className service id
-    * @param CacheInterface $cache cache container
-    * @return mixed service or null
-    * 
-    * @throws NotFoundException for no found service
-    * @throws ContainerException for error
+    * {@inheritDoc}
+    * @see \Seeren\Container\Resolver\ResolverInterface::resolve()
     */
    public final function resolve(string $className, CacheInterface $cache = null)
    {
@@ -117,11 +98,8 @@ class Container implements ContainerInterface, CacheInterface, ResolverInterface
    }
 
    /**
-    * Set service
-    *
-    * @param string $className service id
-    * @param mixed $value service value
-    * @return CacheInterface cache
+    * {@inheritDoc}
+    * @see \Seeren\Container\Cache\CacheInterface::set()
     */
    public final function set(string $className, $value): CacheInterface
    {
@@ -129,10 +107,8 @@ class Container implements ContainerInterface, CacheInterface, ResolverInterface
    }
 
    /**
-    * Register service
-    *
-    * @param ServiceInterface $service service provider
-    * @return CacheInterface CacheInterface
+    * {@inheritDoc}
+    * @see \Seeren\Container\Cache\CacheInterface::register()
     */
    public final function register(ServiceInterface $service): CacheInterface
    {

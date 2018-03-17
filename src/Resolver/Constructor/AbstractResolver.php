@@ -1,16 +1,13 @@
 <?php
 
 /**
- * This file contain Seeren\Container\Resolver\Constructor\AbstractResolver
- * class
  *     __
  *    / /__ __ __ __ __ __
  *   / // // // // // // /
  *  /_// // // // // // /
  *    /_//_//_//_//_//_/
  *
- * @copyright (c) Cyril Ichti <consultant@seeren.fr>
- * @link http://www.seeren.fr/ Seeren
+ * @author Cyril Ichti <consultant@seeren.fr>
  * @link https://github.com/seeren/container
  * @version 1.1.2
  */
@@ -39,22 +36,15 @@ abstract class AbstractResolver
     /**
      * Get parameter argument
      *
-     * @param ReflectionParameter $param reflected argument
-     * @param CacheInterface $cache container
-     * @return null|mixed object in argument
+     * @param ReflectionParameter $param
+     * @param CacheInterface $cache
+     * @return null|mixed
      *
-     * @throws NotFoundException for no found service
-     * @throws ContainerException for error
+     * @throws NotFoundException
+     * @throws ContainerException
      */
-    abstract protected function getArg(
-        ReflectionParameter $param,
-        CacheInterface $cache = null);
+    abstract protected function getArg(ReflectionParameter $param, CacheInterface $cache = null);
 
-   /**
-    * Construct AbstractResolver
-    * 
-    * @return null
-    */
    protected function __construct()
    {
    }
@@ -62,11 +52,11 @@ abstract class AbstractResolver
    /**
     * Get reflexion class
     *
-    * @param string $className service id
-    * @return ReflectionClass reflection
+    * @param string $className
+    * @return ReflectionClass
     *
-    * @throws NotFoundException for no found service
-    * @throws ContainerException for error
+    * @throws NotFoundException
+    * @throws ContainerException
     */
    protected final function getReflection(string $className): ReflectionClass
    {
@@ -84,18 +74,10 @@ abstract class AbstractResolver
    }
 
    /**
-    * Resolve service
-    *
-    * @param string $className service id
-    * @param CacheInterface $cache service
-    * @return mixed service or null
-    *
-    * @throws NotFoundException for no found service
-    * @throws ContainerException for error
+    * {@inheritDoc}
+    * @see \Seeren\Container\Resolver\ResolverInterface::resolve()
     */
-   public final function resolve(
-        string $className,
-        CacheInterface $cache = null)
+   public final function resolve(string $className, CacheInterface $cache = null)
    {
        try {
            if (null !== $cache && $cache->has($className)) {

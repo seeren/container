@@ -1,15 +1,13 @@
 <?php
 
 /**
- * This file contain Seeren\Container\Cache\ServiceContainer class
  *     __
  *    / /__ __ __ __ __ __
  *   / // // // // // // /
  *  /_// // // // // // /
  *    /_//_//_//_//_//_/
  *
- * @copyright (c) Cyril Ichti <consultant@seeren.fr>
- * @link http://www.seeren.fr/ Seeren
+ * @author Cyril Ichti <consultant@seeren.fr>
  * @link https://github.com/seeren/container
  * @version 1.1.2
  */
@@ -35,28 +33,21 @@ class CacheContainer implements CacheInterface, ContainerInterface
 
    protected
       /**
-       * @var array service collection
+       * @var array service
        */
        $service;
 
    /**
-    * Construct CacheContainer
-    * 
-    * @return null
+    * @param array $service
     */
-   public function __construct()
+   public function __construct(array $service = [])
    {
-       $this->service = [];
+       $this->service = $service;
    }
 
    /**
-    * Get service
-    *
-    * @param string $className service id
-    * @return mixed service
-    *
-    * @throws NotFoundException for no found service
-    * @throws ContainerException for error
+    * {@inheritDoc}
+    * @see \Psr\Container\ContainerInterface::get()
     */
    public final function get($className)
    {
@@ -77,10 +68,8 @@ class CacheContainer implements CacheInterface, ContainerInterface
     }
 
    /**
-    * Has service
-    * 
-    * @param string $className service id
-    * @return boolean
+    * {@inheritDoc}
+    * @see \Psr\Container\ContainerInterface::has()
     */
    public final function has($className): bool
    {
@@ -88,11 +77,8 @@ class CacheContainer implements CacheInterface, ContainerInterface
    }
 
    /**
-    * Set service
-    *
-    * @param string $className service id
-    * @param mixed $value service value
-    * @return CacheInterface self
+    * {@inheritDoc}
+    * @see \Seeren\Container\Cache\CacheInterface::set()
     */
    public final function set(string $className, $value): CacheInterface
    {
@@ -101,10 +87,8 @@ class CacheContainer implements CacheInterface, ContainerInterface
    }
 
    /**
-    * Register service
-    *
-    * @param ServiceInterface $service service provider
-    * @return CacheInterface container
+    * {@inheritDoc}
+    * @see \Seeren\Container\Cache\CacheInterface::register()
     */
    public final function register(ServiceInterface $service): CacheInterface
    {

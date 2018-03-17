@@ -1,15 +1,13 @@
 <?php
 
 /**
- * This file contain Seeren\Container\Resolver\IocContainer class
  *     __
  *    / /__ __ __ __ __ __
  *   / // // // // // // /
  *  /_// // // // // // /
  *    /_//_//_//_//_//_/
  *
- * @copyright (c) Cyril Ichti <consultant@seeren.fr>
- * @link http://www.seeren.fr/ Seeren
+ * @author Cyril Ichti <consultant@seeren.fr>
  * @link https://github.com/seeren/container
  * @version 1.1.1
  */
@@ -34,10 +32,7 @@ class ResolverContainer implements ResolverInterface, ContainerInterface
 {
 
    /**
-    * Construct ResolverContainer
-    * 
     * @param ResolverInterface $resolver resolver
-    * @return null
     */
    public function __construct(ResolverInterface $resolver)
    {
@@ -45,14 +40,8 @@ class ResolverContainer implements ResolverInterface, ContainerInterface
    }
 
    /**
-    * Get service
-    *
-    * @param string $className service id
-    * @param CacheInterface $cache cache container
-    * @return mixed service
-    *
-    * @throws NotFoundException for no found service
-    * @throws ContainerException for error
+    * {@inheritDoc}
+    * @see \Psr\Container\ContainerInterface::get()
     */
    public final function get($className, CacheInterface $cache = null)
    {
@@ -66,10 +55,8 @@ class ResolverContainer implements ResolverInterface, ContainerInterface
    }
 
    /**
-    * Has service
-    * 
-    * @param string $className service id
-    * @return boolean
+    * {@inheritDoc}
+    * @see \Psr\Container\ContainerInterface::has()
     */
    public final function has($className): bool
    {
@@ -77,14 +64,8 @@ class ResolverContainer implements ResolverInterface, ContainerInterface
    }
 
    /**
-    * Resolve service
-    * 
-    * @param string $className service id
-    * @param CacheInterface $cache cache container
-    * @return mixed service or null
-    * 
-    * @throws NotFoundException for no found service
-    * @throws ContainerException for error
+    * {@inheritDoc}
+    * @see \Seeren\Container\Resolver\ResolverInterface::resolve()
     */
    public final function resolve(string $className, CacheInterface $cache = null)
    {

@@ -1,15 +1,13 @@
 <?php
 
 /**
- * This file contain Seeren\Container\Service\ServiceInterface interface
  *     __
  *    / /__ __ __ __ __ __
  *   / // // // // // // /
  *  /_// // // // // // /
  *    /_//_//_//_//_//_/
  *
- * @copyright (c) Cyril Ichti <consultant@seeren.fr>
- * @link http://www.seeren.fr/ Seeren
+ * @author Cyril Ichti <consultant@seeren.fr>
  * @link https://github.com/seeren/container
  * @version 1.1.1
  */
@@ -31,7 +29,7 @@ interface ServiceInterface
    /**
     * Register container
     *
-    * @param CacheInterface $container cache container
+    * @param CacheInterface $container
     * @return ServiceInterface self
     */
    public function register(CacheInterface $container): self;

@@ -1,15 +1,13 @@
 <?php
 
 /**
- * This file contain Seeren\Container\Cache\CacheInterface interface
  *     __
  *    / /__ __ __ __ __ __
  *   / // // // // // // /
  *  /_// // // // // // /
  *    /_//_//_//_//_//_/
  *
- * @copyright (c) Cyril Ichti <consultant@seeren.fr>
- * @link http://www.seeren.fr/ Seeren
+ * @author Cyril Ichti <consultant@seeren.fr>
  * @link https://github.com/seeren/container
  * @version 1.1.2
  */
@@ -31,16 +29,16 @@ interface CacheInterface
     /**
      * Set service
      *
-     * @param string $className service id
-     * @param mixed $value service value
-    * @return CacheInterface self
+     * @param string $className
+     * @param mixed $value
+     * @return CacheInterface self
      */
     public function set(string $className, $value): self;
 
    /**
     * Register service
     *
-    * @param ServiceInterface $service service provider
+    * @param ServiceInterface $service
     * @return CacheInterface self
     */
    public function register(ServiceInterface $service): self;

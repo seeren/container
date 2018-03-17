@@ -1,16 +1,13 @@
 <?php
 
 /**
- * This file contain Seeren\Container\Resolver\Constructor\TypeHintingResolver
- * class
  *     __
  *    / /__ __ __ __ __ __
  *   / // // // // // // /
  *  /_// // // // // // /
  *    /_//_//_//_//_//_/
  *
- * @copyright (c) Cyril Ichti <consultant@seeren.fr>
- * @link http://www.seeren.fr/ Seeren
+ * @author Cyril Ichti <consultant@seeren.fr>
  * @link https://github.com/seeren/container
  * @version 1.1.4
  */
@@ -31,26 +28,16 @@ use ReflectionParameter;
 class TypeHintingResolver extends AbstractResolver implements ResolverInterface
 {
 
-   /**
-    * Construct TypeHintingResolver
-    * 
-    * @return null
-    */
    public function __construct()
    {
        parent::__construct();
    }
 
    /**
-    * Get parameter argument
-    *
-    * @param ReflectionParameter $param reflected argument
-    * @param CacheInterface $cache container
-    * @return null|mixed object in argument
+    * {@inheritDoc}
+    * @see \Seeren\Container\Resolver\Constructor\AbstractResolver::getArg()
     */
-   protected final function getArg(
-       ReflectionParameter $param,
-       CacheInterface $cache = null)
+   protected final function getArg(ReflectionParameter $param, CacheInterface $cache = null)
    {
            return !$param->isOptional()
                && ($type = $param->getType()) && !$type->isBuiltin()

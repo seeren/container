@@ -1,16 +1,13 @@
 <?php
 
 /**
- * This file contain Seeren\Container\Resolver\Constructor\DocumentationResolver
- * class
  *     __
  *    / /__ __ __ __ __ __
  *   / // // // // // // /
  *  /_// // // // // // /
  *    /_//_//_//_//_//_/
  *
- * @copyright (c) Cyril Ichti <consultant@seeren.fr>
- * @link http://www.seeren.fr/ Seeren
+ * @author Cyril Ichti <consultant@seeren.fr>
  * @link https://github.com/seeren/container
  * @version 1.2.2
  */
@@ -32,26 +29,16 @@ class DocumentationResolver extends AbstractResolver implements
     ResolverInterface
 {
 
-   /**
-    * Construct DocumentationResolver
-    * 
-    * @return null
-    */
    public function __construct()
    {
        parent::__construct();
    }
 
    /**
-    * Get parameter argument
-    *
-    * @param ReflectionParameter $param reflected argument
-    * @param CacheInterface $cache container
-    * @return null|mixed object in argument
+    * {@inheritDoc}
+    * @see \Seeren\Container\Resolver\Constructor\AbstractResolver::getArg()
     */
-   protected final function getArg(
-       ReflectionParameter $param,
-       CacheInterface $cache = null)
+   protected final function getArg(ReflectionParameter $param, CacheInterface $cache = null)
    {
        $match = [];
        $delimiter = "@param";
@@ -65,7 +52,6 @@ class DocumentationResolver extends AbstractResolver implements
        if (array_key_exists(1, $match)) {
            return $this->resolve($match[1], $cache);
        }
-
    }
 
 }
