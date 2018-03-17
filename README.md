@@ -27,34 +27,40 @@ composer require seeren/container dev-master
 A fully qualified class name instance can be resolved and shared.
 
 ```php
-$bar = $container->get(Bar::class);
+$foo = $container->get(Foo::class);
 ```
 
 Resolve return a non shared instance.
 
 ```php
-$bar = $container->resolve(Bar::class);
+$foo = $container->resolve(Foo::class);
 ```
 
 The container cache manage service persistence, every value type is accepted and closures arent called when service is asked.
 
 ```php
-$container->set("foo", function ($c) {
-    return new Foo($c->get("bar"));
-});
 $container->set("bar", function ($c) {
-    return new Bar;
+    return new Bar($c->get("foo"));
 });
-$foo = $container->get("foo");
+$container->set("foo", function ($c) {
+    return new Foo;
+});
+$bar = $container->get("bar");
 ```
 
 Documentation can be use for that resolved instances can configure params.
 
 ```php
-/**
- * @param Foo $foo
- */
-public function __construct($foo)
+class Bar {
+
+	/**
+	 * @param Foo $foo
+	 */
+	public function __construct($foo)
+	{
+	}
+
+}
 ```
 
 The container expect a resolver and a cache at construction.
