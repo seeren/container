@@ -38,7 +38,7 @@ abstract class ServiceProvider implements ServiceInterface
     */
    protected function __construct(array $service = [])
    {
-       $this->service = service;
+       $this->service = $service;
    }
 
    /**
