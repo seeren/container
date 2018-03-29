@@ -17,7 +17,6 @@ namespace Seeren\Container\Resolver;
 use Psr\Container\ContainerInterface;
 use Seeren\Container\Exception\ContainerException;
 use Seeren\Container\Exception\NotFoundException;
-use Seeren\Container\Resolver\ResolverInterface;
 use Seeren\Container\Cache\CacheInterface;
 
 /**

@@ -11,6 +11,7 @@
  * @link https://github.com/seeren/container
  * @version 1.1.1
  */
+
 namespace Seeren\Container\Resolver;
 
 use Seeren\Container\Cache\CacheInterface;

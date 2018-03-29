@@ -11,6 +11,7 @@
  * @link https://github.com/seeren/container
  * @version 1.1.3
  */
+
 namespace Seeren\Container\Exception;
 
 use Psr\Container\NotFoundExceptionInterface as PsrNotFoundException;
