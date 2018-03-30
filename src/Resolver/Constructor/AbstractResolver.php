@@ -9,7 +9,7 @@
  *
  * @author Cyril Ichti <consultant@seeren.fr>
  * @link https://github.com/seeren/container
- * @version 1.1.2
+ * @version 1.1.3
  */
 
 namespace Seeren\Container\Resolver\Constructor;
@@ -85,8 +85,10 @@ abstract class AbstractResolver
            }
            $reflexion = $this->getReflection($className);
            $args = [];
-           foreach ($reflexion->getConstructor()->getParameters() as $param) {
-               $args[] = $this->getArg($param, $cache);
+           if (($constructor = $reflexion->getConstructor())) {
+               foreach ($constructor->getParameters() as $param) {
+                   $args[] = $this->getArg($param, $cache);
+               }
            }
            $instance = $reflexion->newInstanceArgs($args);
            if (null !== $cache) {
