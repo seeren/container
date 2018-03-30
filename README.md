@@ -96,7 +96,7 @@ Run [phpunit](https://phpunit.de/) with [Xdebug](https://xdebug.org/) enable and
 Run [coveralls](https://coveralls.io/).
 
 ```
-./vendor/bin/coveralls -v
+./vendor/bin/php-coveralls -v
 ```
 
 ## License

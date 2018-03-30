@@ -10,4 +10,4 @@ script:
     - vendor/bin/phpunit
 
 after_success:
-  - travis_retry php vendor/bin/coveralls --exclude-no-stmt
+  - travis_retry php vendor/bin/php-coveralls --exclude-no-stmt
