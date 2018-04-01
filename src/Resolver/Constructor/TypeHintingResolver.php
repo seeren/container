@@ -28,16 +28,11 @@ use ReflectionParameter;
 class TypeHintingResolver extends AbstractResolver implements ResolverInterface
 {
 
-   public function __construct()
-   {
-       parent::__construct();
-   }
-
    /**
     * {@inheritDoc}
     * @see \Seeren\Container\Resolver\Constructor\AbstractResolver::getArg()
     */
-   protected final function getArg(ReflectionParameter $param, CacheInterface $cache = null)
+    protected final function getArg(ReflectionParameter $param, CacheInterface $cache = null)
    {
            return !$param->isOptional()
                && ($type = $param->getType()) && !$type->isBuiltin()

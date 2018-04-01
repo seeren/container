@@ -45,10 +45,6 @@ abstract class AbstractResolver
      */
     abstract protected function getArg(ReflectionParameter $param, CacheInterface $cache = null);
 
-   protected function __construct()
-   {
-   }
-
    /**
     * Get reflexion class
     *

@@ -29,16 +29,11 @@ class DocumentationResolver extends AbstractResolver implements
     ResolverInterface
 {
 
-   public function __construct()
-   {
-       parent::__construct();
-   }
-
    /**
     * {@inheritDoc}
     * @see \Seeren\Container\Resolver\Constructor\AbstractResolver::getArg()
     */
-   protected final function getArg(ReflectionParameter $param, CacheInterface $cache = null)
+    protected final function getArg(ReflectionParameter $param, CacheInterface $cache = null)
    {
        $match = [];
        $delimiter = "@param";
