@@ -47,8 +47,6 @@ class ResolverContainerTest extends AbstractContainerTest
 
    /**
     * @covers \Seeren\Container\Resolver\ResolverContainer::__construct
-    * @covers \Seeren\Container\Resolver\Constructor\AbstractResolver::__construct
-    * @covers \Seeren\Container\Resolver\Constructor\DocumentationResolver::__construct
     * @covers \Seeren\Container\Resolver\ResolverContainer::get
     * @covers \Seeren\Container\Resolver\ResolverContainer::has
     * @covers \Seeren\Container\Exception\NotFoundException::__construct
@@ -65,8 +63,6 @@ class ResolverContainerTest extends AbstractContainerTest
 
    /**
     * @covers \Seeren\Container\Resolver\ResolverContainer::__construct
-    * @covers \Seeren\Container\Resolver\Constructor\AbstractResolver::__construct
-    * @covers \Seeren\Container\Resolver\Constructor\DocumentationResolver::__construct
     * @covers \Seeren\Container\Resolver\ResolverContainer::get
     * @covers \Seeren\Container\Resolver\ResolverContainer::has
     * @covers \Seeren\Container\Exception\ContainerException::__construct
@@ -82,15 +78,11 @@ class ResolverContainerTest extends AbstractContainerTest
 
    /**
     * @covers \Seeren\Container\Resolver\ResolverContainer::__construct
-    * @covers \Seeren\Container\Resolver\Constructor\AbstractResolver::__construct
-    * @covers \Seeren\Container\Resolver\Constructor\DocumentationResolver::__construct
     * @covers \Seeren\Container\Resolver\ResolverContainer::get
     * @covers \Seeren\Container\Resolver\ResolverContainer::has
-    * @covers \Seeren\Container\Resolver\Constructor\AbstractResolver::__construct
     * @covers \Seeren\Container\Resolver\Constructor\AbstractResolver::getReflection
     * @covers \Seeren\Container\Resolver\Constructor\AbstractResolver::resolve
     * @covers \Seeren\Container\Resolver\ResolverContainer::resolve
-    * @covers \Seeren\Container\Resolver\Constructor\DocumentationResolver::__construct
     */
    public function testGet()
    {
@@ -99,8 +91,6 @@ class ResolverContainerTest extends AbstractContainerTest
 
    /**
     * @covers \Seeren\Container\Resolver\ResolverContainer::__construct
-    * @covers \Seeren\Container\Resolver\Constructor\AbstractResolver::__construct
-    * @covers \Seeren\Container\Resolver\Constructor\DocumentationResolver::__construct
     * @covers \Seeren\Container\Resolver\ResolverContainer::has
     */
    public function testHasFalse()
@@ -110,8 +100,6 @@ class ResolverContainerTest extends AbstractContainerTest
 
    /**
     * @covers \Seeren\Container\Resolver\ResolverContainer::__construct
-    * @covers \Seeren\Container\Resolver\Constructor\AbstractResolver::__construct
-    * @covers \Seeren\Container\Resolver\Constructor\DocumentationResolver::__construct
     * @covers \Seeren\Container\Exception\NotFoundException::__construct
     * @covers \Seeren\Container\Resolver\Constructor\AbstractResolver::getReflection
     * @covers \Seeren\Container\Resolver\Constructor\AbstractResolver::resolve
@@ -126,8 +114,6 @@ class ResolverContainerTest extends AbstractContainerTest
 
    /**
     * @covers \Seeren\Container\Resolver\ResolverContainer::__construct
-    * @covers \Seeren\Container\Resolver\Constructor\AbstractResolver::__construct
-    * @covers \Seeren\Container\Resolver\Constructor\DocumentationResolver::__construct
     * @covers \Seeren\Container\Exception\ContainerException::__construct
     * @covers \Seeren\Container\Resolver\Constructor\AbstractResolver::getReflection
     * @covers \Seeren\Container\Resolver\Constructor\AbstractResolver::resolve

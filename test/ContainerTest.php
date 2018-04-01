@@ -58,10 +58,8 @@ class ContainerTest extends AbstractContainerTest
     * @covers \Seeren\Container\Cache\CacheContainer::has
     * @covers Seeren\Container\Container::__construct
     * @covers Seeren\Container\Container::get
-    * @covers Seeren\Container\Resolver\Constructor\AbstractResolver::__construct
     * @covers Seeren\Container\Resolver\Constructor\AbstractResolver::getReflection
     * @covers Seeren\Container\Resolver\Constructor\AbstractResolver::resolve
-    * @covers Seeren\Container\Resolver\Constructor\TypeHintingResolver::__construct
     * @covers Seeren\Container\Resolver\ResolverContainer::__construct
     * @covers Seeren\Container\Resolver\ResolverContainer::resolve
     * @covers \Seeren\Container\Exception\NotFoundException::__construct
@@ -80,10 +78,8 @@ class ContainerTest extends AbstractContainerTest
     * @covers Seeren\Container\Container::__construct
     * @covers Seeren\Container\Container::get
     * @covers Seeren\Container\Exception\NotFoundException::__construct
-    * @covers Seeren\Container\Resolver\Constructor\AbstractResolver::__construct
     * @covers Seeren\Container\Resolver\Constructor\AbstractResolver::getReflection
     * @covers Seeren\Container\Resolver\Constructor\AbstractResolver::resolve
-    * @covers Seeren\Container\Resolver\Constructor\TypeHintingResolver::__construct
     * @covers Seeren\Container\Resolver\ResolverContainer::__construct
     * @covers Seeren\Container\Resolver\ResolverContainer::resolve
     * @covers \Seeren\Container\Exception\ContainerException::__construct
@@ -102,10 +98,8 @@ class ContainerTest extends AbstractContainerTest
     * @covers Seeren\Container\Container::__construct
     * @covers Seeren\Container\Container::get
     * @covers Seeren\Container\Exception\NotFoundException::__construct
-    * @covers Seeren\Container\Resolver\Constructor\AbstractResolver::__construct
     * @covers Seeren\Container\Resolver\Constructor\AbstractResolver::getReflection
     * @covers Seeren\Container\Resolver\Constructor\AbstractResolver::resolve
-    * @covers Seeren\Container\Resolver\Constructor\TypeHintingResolver::__construct
     * @covers Seeren\Container\Resolver\ResolverContainer::__construct
     * @covers Seeren\Container\Resolver\ResolverContainer::resolve
     */
@@ -121,8 +115,6 @@ class ContainerTest extends AbstractContainerTest
     * @covers \Seeren\Container\Cache\CacheContainer::get
     * @covers \Seeren\Container\Container::__construct
     * @covers \Seeren\Container\Container::set
-    * @covers \Seeren\Container\Resolver\Constructor\AbstractResolver::__construct
-    * @covers \Seeren\Container\Resolver\Constructor\TypeHintingResolver::__construct
     * @covers \Seeren\Container\Resolver\ResolverContainer::__construct
 
     */
@@ -137,8 +129,6 @@ class ContainerTest extends AbstractContainerTest
     * @covers \Seeren\Container\Cache\CacheContainer::has
     * @covers Seeren\Container\Container::__construct
     * @covers Seeren\Container\Container::has
-    * @covers Seeren\Container\Resolver\Constructor\AbstractResolver::__construct
-    * @covers Seeren\Container\Resolver\Constructor\TypeHintingResolver::__construct
     * @covers Seeren\Container\Resolver\ResolverContainer::__construct
     */
    public function testHasFalse()
@@ -147,8 +137,6 @@ class ContainerTest extends AbstractContainerTest
    }
 
    /**
-    * @covers \Seeren\Container\Resolver\Constructor\TypeHintingResolver::__construct
-    * @covers \Seeren\Container\Resolver\Constructor\AbstractResolver::__construct
     * @covers \Seeren\Container\Resolver\Constructor\TypeHintingResolver::resolve
     * @covers \Seeren\Container\Resolver\Constructor\AbstractResolver::getReflection
     * @covers \Seeren\Container\Cache\CacheContainer::__construct
@@ -164,8 +152,6 @@ class ContainerTest extends AbstractContainerTest
    }
 
    /**
-    * @covers \Seeren\Container\Resolver\Constructor\TypeHintingResolver::__construct
-    * @covers \Seeren\Container\Resolver\Constructor\AbstractResolver::__construct
     * @covers \Seeren\Container\Resolver\Constructor\TypeHintingResolver::resolve
     * @covers \Seeren\Container\Resolver\Constructor\AbstractResolver::getReflection
     * @covers \Seeren\Container\Exception\NotFoundException::__construct
@@ -182,8 +168,6 @@ class ContainerTest extends AbstractContainerTest
    }
 
    /**
-    * @covers \Seeren\Container\Resolver\Constructor\TypeHintingResolver::__construct
-    * @covers \Seeren\Container\Resolver\Constructor\AbstractResolver::__construct
     * @covers \Seeren\Container\Resolver\Constructor\TypeHintingResolver::resolve
     * @covers \Seeren\Container\Resolver\Constructor\AbstractResolver::getReflection
     * @covers \Seeren\Container\Exception\ContainerException::__construct
@@ -208,8 +192,6 @@ class ContainerTest extends AbstractContainerTest
     * @covers \Seeren\Container\Container::__construct
     * @covers \Seeren\Container\Container::has
     * @covers \Seeren\Container\Container::register
-    * @covers \Seeren\Container\Resolver\Constructor\AbstractResolver::__construct
-    * @covers \Seeren\Container\Resolver\Constructor\TypeHintingResolver::__construct
     * @covers \Seeren\Container\Resolver\ResolverContainer::__construct
     * @covers \Seeren\Container\Service\ServiceProvider::__construct
     * @covers \Seeren\Container\Service\ServiceProvider::register

@@ -54,8 +54,6 @@ class TypeHintingResolverTest extends AbstractResolverTest
     }
 
     /**
-     * @covers \Seeren\Container\Resolver\Constructor\TypeHintingResolver::__construct
-     * @covers \Seeren\Container\Resolver\Constructor\AbstractResolver::__construct
      * @covers \Seeren\Container\Resolver\Constructor\TypeHintingResolver::resolve
      * @covers \Seeren\Container\Resolver\Constructor\AbstractResolver::getReflection
      */
@@ -65,8 +63,6 @@ class TypeHintingResolverTest extends AbstractResolverTest
     }
 
    /**
-    * @covers \Seeren\Container\Resolver\Constructor\TypeHintingResolver::__construct
-    * @covers \Seeren\Container\Resolver\Constructor\AbstractResolver::__construct
     * @covers \Seeren\Container\Resolver\Constructor\TypeHintingResolver::resolve
     * @covers \Seeren\Container\Resolver\Constructor\AbstractResolver::getReflection
     * @covers \Seeren\Container\Exception\NotFoundException::__construct
@@ -78,8 +74,6 @@ class TypeHintingResolverTest extends AbstractResolverTest
    }
 
    /**
-    * @covers \Seeren\Container\Resolver\Constructor\TypeHintingResolver::__construct
-    * @covers \Seeren\Container\Resolver\Constructor\AbstractResolver::__construct
     * @covers \Seeren\Container\Resolver\Constructor\TypeHintingResolver::resolve
     * @covers \Seeren\Container\Resolver\Constructor\AbstractResolver::getReflection
     * @covers \Seeren\Container\Exception\ContainerException::__construct
@@ -91,8 +85,6 @@ class TypeHintingResolverTest extends AbstractResolverTest
    }
 
    /**
-    * @covers \Seeren\Container\Resolver\Constructor\TypeHintingResolver::__construct
-    * @covers \Seeren\Container\Resolver\Constructor\AbstractResolver::__construct
     * @covers \Seeren\Container\Resolver\Constructor\TypeHintingResolver::resolve
     * @covers \Seeren\Container\Resolver\Constructor\AbstractResolver::getReflection
     * @covers \Seeren\Container\Exception\ContainerException::__construct
@@ -104,8 +96,6 @@ class TypeHintingResolverTest extends AbstractResolverTest
    }
 
    /**
-    * @covers \Seeren\Container\Resolver\Constructor\TypeHintingResolver::__construct
-    * @covers \Seeren\Container\Resolver\Constructor\AbstractResolver::__construct
     * @covers \Seeren\Container\Resolver\Constructor\TypeHintingResolver::resolve
     * @covers \Seeren\Container\Resolver\Constructor\AbstractResolver::getReflection
     * @covers \Seeren\Container\Cache\CacheContainer::__construct
@@ -119,8 +109,6 @@ class TypeHintingResolverTest extends AbstractResolverTest
    }
 
    /**
-    * @covers \Seeren\Container\Resolver\Constructor\TypeHintingResolver::__construct
-    * @covers \Seeren\Container\Resolver\Constructor\AbstractResolver::__construct
     * @covers \Seeren\Container\Resolver\Constructor\TypeHintingResolver::resolve
     * @covers \Seeren\Container\Resolver\Constructor\AbstractResolver::getReflection
     * @covers \Seeren\Container\Cache\CacheContainer::__construct
@@ -134,8 +122,6 @@ class TypeHintingResolverTest extends AbstractResolverTest
    }
 
    /**
-    * @covers \Seeren\Container\Resolver\Constructor\TypeHintingResolver::__construct
-    * @covers \Seeren\Container\Resolver\Constructor\AbstractResolver::__construct
     * @covers \Seeren\Container\Resolver\Constructor\TypeHintingResolver::resolve
     * @covers \Seeren\Container\Resolver\Constructor\AbstractResolver::getReflection
     * @covers \Seeren\Container\Resolver\Constructor\TypeHintingResolver::getArg
@@ -147,8 +133,6 @@ class TypeHintingResolverTest extends AbstractResolverTest
    }
 
    /**
-    * @covers \Seeren\Container\Resolver\Constructor\TypeHintingResolver::__construct
-    * @covers \Seeren\Container\Resolver\Constructor\AbstractResolver::__construct
     * @covers \Seeren\Container\Resolver\Constructor\TypeHintingResolver::resolve
     * @covers \Seeren\Container\Resolver\Constructor\AbstractResolver::getReflection
     * @covers \Seeren\Container\Resolver\Constructor\TypeHintingResolver::getArg

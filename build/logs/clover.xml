@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1522608013">
-  <project timestamp="1522608013">
+<coverage generated="1522619760">
+  <project timestamp="1522619760">
     <package name="Seeren\Container\Cache">
       <file name="C:\xampp\htdocs\dev-master.seeren\container\src/Cache/CacheContainer.php">
         <class name="Seeren\Container\Cache\CacheContainer" namespace="Seeren\Container\Cache" fullPackage="Container.Cache" category="Seeren" package="Container" subpackage="Cache">
@@ -92,74 +92,66 @@
     <package name="Seeren\Container\Resolver\Constructor">
       <file name="C:\xampp\htdocs\dev-master.seeren\container\src/Resolver/Constructor/AbstractResolver.php">
         <class name="Seeren\Container\Resolver\Constructor\AbstractResolver" namespace="Seeren\Container\Resolver\Constructor" fullPackage="Container.Resolver" category="Seeren" package="Container" subpackage="Resolver">
-          <metrics complexity="13" methods="3" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="26" coveredstatements="26" elements="29" coveredelements="29"/>
+          <metrics complexity="12" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="25" coveredstatements="25" elements="27" coveredelements="27"/>
         </class>
-        <line num="48" type="method" name="__construct" visibility="protected" complexity="1" crap="1" count="34"/>
-        <line num="50" type="stmt" count="34"/>
-        <line num="61" type="method" name="getReflection" visibility="protected" complexity="3" crap="3" count="30"/>
-        <line num="64" type="stmt" count="30"/>
-        <line num="65" type="stmt" count="7"/>
-        <line num="66" type="stmt" count="7"/>
-        <line num="67" type="stmt" count="7"/>
-        <line num="69" type="stmt" count="24"/>
-        <line num="70" type="stmt" count="2"/>
-        <line num="71" type="stmt" count="2"/>
-        <line num="73" type="stmt" count="22"/>
-        <line num="80" type="method" name="resolve" visibility="public" complexity="8" crap="8" count="30"/>
-        <line num="83" type="stmt" count="30"/>
-        <line num="84" type="stmt" count="2"/>
-        <line num="86" type="stmt" count="30"/>
-        <line num="87" type="stmt" count="22"/>
-        <line num="88" type="stmt" count="22"/>
-        <line num="89" type="stmt" count="22"/>
-        <line num="90" type="stmt" count="7"/>
-        <line num="93" type="stmt" count="21"/>
-        <line num="94" type="stmt" count="14"/>
-        <line num="95" type="stmt" count="5"/>
-        <line num="97" type="stmt" count="14"/>
-        <line num="98" type="stmt" count="16"/>
-        <line num="99" type="stmt" count="7"/>
-        <line num="100" type="stmt" count="7"/>
-        <line num="101" type="stmt" count="9"/>
-        <line num="102" type="stmt" count="9"/>
-        <line num="103" type="stmt" count="9"/>
-        <metrics loc="107" ncloc="65" classes="1" methods="3" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="26" coveredstatements="26" elements="29" coveredelements="29"/>
+        <line num="57" type="method" name="getReflection" visibility="protected" complexity="3" crap="3" count="30"/>
+        <line num="60" type="stmt" count="30"/>
+        <line num="61" type="stmt" count="7"/>
+        <line num="62" type="stmt" count="7"/>
+        <line num="63" type="stmt" count="7"/>
+        <line num="65" type="stmt" count="24"/>
+        <line num="66" type="stmt" count="2"/>
+        <line num="67" type="stmt" count="2"/>
+        <line num="69" type="stmt" count="22"/>
+        <line num="76" type="method" name="resolve" visibility="public" complexity="8" crap="8" count="30"/>
+        <line num="79" type="stmt" count="30"/>
+        <line num="80" type="stmt" count="2"/>
+        <line num="82" type="stmt" count="30"/>
+        <line num="83" type="stmt" count="22"/>
+        <line num="84" type="stmt" count="22"/>
+        <line num="85" type="stmt" count="22"/>
+        <line num="86" type="stmt" count="7"/>
+        <line num="89" type="stmt" count="21"/>
+        <line num="90" type="stmt" count="14"/>
+        <line num="91" type="stmt" count="5"/>
+        <line num="93" type="stmt" count="14"/>
+        <line num="94" type="stmt" count="16"/>
+        <line num="95" type="stmt" count="7"/>
+        <line num="96" type="stmt" count="7"/>
+        <line num="97" type="stmt" count="9"/>
+        <line num="98" type="stmt" count="9"/>
+        <line num="99" type="stmt" count="9"/>
+        <metrics loc="103" ncloc="61" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="25" coveredstatements="25" elements="27" coveredelements="27"/>
       </file>
       <file name="C:\xampp\htdocs\dev-master.seeren\container\src/Resolver/Constructor/DocumentationResolver.php">
         <class name="Seeren\Container\Resolver\Constructor\DocumentationResolver" namespace="Seeren\Container\Resolver\Constructor" fullPackage="Container.Resolver" category="Seeren" package="Container" subpackage="Resolver">
-          <metrics complexity="3" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="14" coveredstatements="14" elements="16" coveredelements="16"/>
+          <metrics complexity="2" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="12" coveredstatements="12" elements="13" coveredelements="13"/>
         </class>
-        <line num="32" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="17"/>
-        <line num="34" type="stmt" count="17"/>
-        <line num="35" type="stmt" count="17"/>
-        <line num="41" type="method" name="getArg" visibility="protected" complexity="2" crap="2" count="5"/>
+        <line num="36" type="method" name="getArg" visibility="protected" complexity="2" crap="2" count="5"/>
+        <line num="38" type="stmt" count="5"/>
+        <line num="39" type="stmt" count="5"/>
+        <line num="40" type="stmt" count="5"/>
+        <line num="41" type="stmt" count="5"/>
+        <line num="42" type="stmt" count="5"/>
         <line num="43" type="stmt" count="5"/>
         <line num="44" type="stmt" count="5"/>
         <line num="45" type="stmt" count="5"/>
         <line num="46" type="stmt" count="5"/>
         <line num="47" type="stmt" count="5"/>
-        <line num="48" type="stmt" count="5"/>
-        <line num="49" type="stmt" count="5"/>
-        <line num="50" type="stmt" count="5"/>
-        <line num="51" type="stmt" count="5"/>
-        <line num="52" type="stmt" count="5"/>
-        <line num="53" type="stmt" count="4"/>
-        <line num="55" type="stmt" count="1"/>
-        <metrics loc="57" ncloc="35" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="14" coveredstatements="14" elements="16" coveredelements="16"/>
+        <line num="48" type="stmt" count="4"/>
+        <line num="50" type="stmt" count="1"/>
+        <metrics loc="52" ncloc="30" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="12" coveredstatements="12" elements="13" coveredelements="13"/>
       </file>
       <file name="C:\xampp\htdocs\dev-master.seeren\container\src/Resolver/Constructor/TypeHintingResolver.php">
         <class name="Seeren\Container\Resolver\Constructor\TypeHintingResolver" namespace="Seeren\Container\Resolver\Constructor" fullPackage="Container.Resolver" category="Seeren" package="Container" subpackage="Resolver">
-          <metrics complexity="5" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="6" coveredstatements="6" elements="8" coveredelements="8"/>
+          <metrics complexity="4" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="4" elements="5" coveredelements="5"/>
         </class>
-        <line num="31" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="17"/>
-        <line num="33" type="stmt" count="17"/>
-        <line num="34" type="stmt" count="17"/>
-        <line num="40" type="method" name="getArg" visibility="protected" complexity="4" crap="4" count="2"/>
-        <line num="42" type="stmt" count="2"/>
-        <line num="43" type="stmt" count="2"/>
-        <line num="44" type="stmt" count="2"/>
-        <line num="45" type="stmt" count="2"/>
-        <metrics loc="48" ncloc="26" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="6" coveredstatements="6" elements="8" coveredelements="8"/>
+        <line num="35" type="method" name="getArg" visibility="protected" complexity="4" crap="4" count="2"/>
+        <line num="37" type="stmt" count="2"/>
+        <line num="38" type="stmt" count="2"/>
+        <line num="39" type="stmt" count="2"/>
+        <line num="40" type="stmt" count="2"/>
+        <metrics loc="43" ncloc="21" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="4" elements="5" coveredelements="5"/>
       </file>
     </package>
     <package name="Seeren\Container\Resolver">
@@ -208,6 +200,6 @@
         <metrics loc="56" ncloc="27" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="5" elements="7" coveredelements="7"/>
       </file>
     </package>
-    <metrics files="12" loc="769" ncloc="402" classes="9" methods="26" coveredmethods="26" conditionals="0" coveredconditionals="0" statements="106" coveredstatements="106" elements="132" coveredelements="132"/>
+    <metrics files="12" loc="755" ncloc="388" classes="9" methods="23" coveredmethods="23" conditionals="0" coveredconditionals="0" statements="101" coveredstatements="101" elements="124" coveredelements="124"/>
   </project>
 </coverage>
