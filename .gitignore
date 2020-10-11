@@ -1,7 +1,5 @@
-/.settings/
+/.idea
 /public/
 /vendor/
-.buildpath
-.project
-composer.lock
-phpunit.xml
+/.phpunit.result.cache
+/composer.lock
