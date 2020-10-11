@@ -1,117 +1,81 @@
 <?php
 
+namespace Seeren\Container;
+
+use Psr\Container\ContainerExceptionInterface;
+use Psr\Container\ContainerInterface;
+use Psr\Container\NotFoundExceptionInterface;
+use Seeren\Container\Exception\ContainerException;
+use Seeren\Container\Exception\NotFoundException;
+use Seeren\Container\Parser\ParserContainer;
+use Seeren\Container\Resolver\ResolverContainer;
+
 /**
+ * Class to represent a container
+ *
  *     __
  *    / /__ __ __ __ __ __
  *   / // // // // // // /
  *  /_// // // // // // /
  *    /_//_//_//_//_//_/
  *
- * @author Cyril Ichti <consultant@seeren.fr>
- * @link http://www.seeren.fr/ Seeren
- * @version 1.1.5
+ * @package Seeren\Container
  */
-
-namespace Seeren\Container;
-
-use Psr\Container\ContainerInterface;
-use Seeren\Container\Resolver\ResolverInterface;
-use Seeren\Container\Cache\CacheInterface;
-use Seeren\Container\Service\ServiceInterface;
-use Seeren\Container\Exception\NotFoundException;
-use Seeren\Container\Exception\ContainerException;
-
-/**
- * Class for represent a container
- * 
- * @category Seeren
- * @package Container
- * @see http://www.php-fig.org/psr/psr-11/
- */
-class Container implements ContainerInterface, CacheInterface, ResolverInterface
+class Container implements ContainerInterface
 {
 
-   protected
-       /**
-        * @var ResolverInterface resolver
-        */
-       $resolver,
-       /**
-        * @var CacheInterface cache
-        */
-       $service;
+    /**
+     * @var array
+     */
+    private array $services = [];
 
-   /**
-    * @param ResolverInterface $resolver
-    * @param CacheInterface $cache
-    */
-   public function __construct(ResolverInterface $resolver, CacheInterface $cache)
-   {
-       $this->resolver = $resolver;
-       $this->cache = $cache;
-   }
+    /**
+     * @var ResolverContainer
+     */
+    private ResolverContainer $resolver;
 
-   /**
-    * {@inheritDoc}
-    * @see \Psr\Container\ContainerInterface::get()
-    */
-   public final function get($className)
-   {
-       try {
-           return $this->cache->get(... func_get_args());
-       } catch (NotFoundException $e) {
-           try {
-               $service = $this->resolver->resolve($className, $this->cache);
-           } catch (NotFoundException $e) {
-               throw $e;
-           } catch (ContainerException $e) {
-               throw $e;
-           }
-       }
-       $this->cache->set($className, $service);
-       return $this->cache->get($className);
-   }
+    /**
+     * @param string|null $filename
+     *
+     * @throws ContainerException|NotFoundException for invalid configuration file
+     */
+    public function __construct(string $filename = null)
+    {
+        $this->resolver = new ResolverContainer();
+        $filename = $filename ?? dirname(__FILE__, 6)
+            . DIRECTORY_SEPARATOR
+            . 'config'
+            . DIRECTORY_SEPARATOR
+            . 'services.json';
+        if (is_file($filename)) {
+            new ParserContainer($filename, $this->services);
+        }
+    }
 
-   /**
-    * {@inheritDoc}
-    * @see \Psr\Container\ContainerInterface::has()
-    */
-   public final function has($className): bool
-   {
-       return $this->cache->has($className);
-   }
+    /**
+     * {@inheritDoc}
+     * @see \Psr\Container\ContainerInterface::get()
+     */
+    public final function get($id): object
+    {
+        try {
+            return !$this->has($id)
+                ? $this->services[$id] = $this->resolver->get($id, $this->services)
+                : $this->services[$id];
+        } catch (NotFoundExceptionInterface $e) {
+            throw $e;
+        } catch (ContainerExceptionInterface $e) {
+            throw $e;
+        }
+    }
 
-   /**
-    * {@inheritDoc}
-    * @see \Seeren\Container\Resolver\ResolverInterface::resolve()
-    */
-   public final function resolve(string $className, CacheInterface $cache = null)
-   {
-       try {
-           return $this->resolver->resolve($className, $cache);
-       } catch (NotFoundException $e) {
-           throw $e;
-       } catch (ContainerException $e) {
-           throw $e;
-       }
-   }
-
-   /**
-    * {@inheritDoc}
-    * @see \Seeren\Container\Cache\CacheInterface::set()
-    */
-   public final function set(string $className, $value): CacheInterface
-   {
-       return $this->cache->set($className, $value);
-   }
-
-   /**
-    * {@inheritDoc}
-    * @see \Seeren\Container\Cache\CacheInterface::register()
-    */
-   public final function register(ServiceInterface $service): CacheInterface
-   {
-       return $this->cache->register($service);
-   }
+    /**
+     * {@inheritDoc}
+     * @see \Psr\Container\ContainerInterface::has()
+     */
+    public final function has($id): bool
+    {
+        return array_key_exists($id, $this->services) && is_object($this->services[$id]);
+    }
 
 }
