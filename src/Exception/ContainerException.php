@@ -1,40 +1,32 @@
 <?php
 
+namespace Seeren\Container\Exception;
+
+use Psr\Container\ContainerExceptionInterface;
+use Exception;
+
 /**
+ * Class to represent a generic exception in a container
+ *
  *     __
  *    / /__ __ __ __ __ __
  *   / // // // // // // /
  *  /_// // // // // // /
  *    /_//_//_//_//_//_/
  *
- * @author Cyril Ichti <consultant@seeren.fr>
- * @link https://github.com/seeren/container
- * @version 1.1.3
+ * @package Seeren\Container\Exception
  */
-
-namespace Seeren\Container\Exception;
-
-use Psr\Container\ContainerExceptionInterface as PsrContainerException;
-use Exception;
-
-/**
- * Class for represent a container exception
- * 
- * @category Seeren
- * @package Container
- * @subpackage Exception
- */
-class ContainerException extends Exception implements PsrContainerException
+class ContainerException extends Exception implements ContainerExceptionInterface
 {
 
-   /**
-    * @param string $message
-    * @param int $code
-    * @param Exception $previous
-    */
-   public function __construct(string $message, int $code = E_ERROR, Exception $previous = null)
-   {
-       parent::__construct($message, $code, $previous);
-   }
+    /**
+     * @param string $message
+     * @param int $code
+     * @param Exception|null $previous
+     */
+    public function __construct(string $message, int $code = E_ERROR, Exception $previous = null)
+    {
+        parent::__construct($message, $code, $previous);
+    }
 
 }

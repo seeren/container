@@ -1,36 +1,28 @@
 <?php
 
+namespace Seeren\Container\Exception;
+
+use Psr\Container\NotFoundExceptionInterface;
+use Exception;
+
 /**
+ * Class to represent missing entry in the container
+ *
  *     __
  *    / /__ __ __ __ __ __
  *   / // // // // // // /
  *  /_// // // // // // /
  *    /_//_//_//_//_//_/
  *
- * @author Cyril Ichti <consultant@seeren.fr>
- * @link https://github.com/seeren/container
- * @version 1.1.3
+ * @package Seeren\Container\Exception
  */
-
-namespace Seeren\Container\Exception;
-
-use Psr\Container\NotFoundExceptionInterface as PsrNotFoundException;
-use Exception;
-
-/**
- * Class for represent a no found container exception
- *
- * @category Seeren
- * @package Container
- * @subpackage Exception
- */
-class NotFoundException extends Exception implements PsrNotFoundException
+class NotFoundException extends Exception implements NotFoundExceptionInterface
 {
 
     /**
      * @param string $message
      * @param int $code
-     * @param Exception $previous
+     * @param Exception|null $previous
      */
     public function __construct(string $message, int $code = E_WARNING, Exception $previous = null)
     {
