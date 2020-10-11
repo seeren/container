@@ -1,42 +1,20 @@
 <?php
 
+namespace Seeren\Container\Resolver;
+
+use Psr\Container\ContainerInterface;
+
 /**
+ * Interface to represent a resolver container
+ *
  *     __
  *    / /__ __ __ __ __ __
  *   / // // // // // // /
  *  /_// // // // // // /
  *    /_//_//_//_//_//_/
  *
- * @author Cyril Ichti <consultant@seeren.fr>
- * @link https://github.com/seeren/container
- * @version 1.1.1
+ * @package Seeren\Container\Resolver
  */
-
-namespace Seeren\Container\Resolver;
-
-use Seeren\Container\Cache\CacheInterface;
-use Seeren\Container\Exception\NotFoundException;
-use Seeren\Container\Exception\ContainerException;
-
-/**
- * Interface for represent a resolver
- *
- * @category Seeren
- * @package Container
- * @subpackage Resolver
- */
-interface ResolverInterface
+interface ResolverContainerInterface extends ContainerInterface
 {
-
-    /**
-     * Resolve service
-     *
-     * @param string $className
-     * @param CacheInterface $cache
-     * @return mixed service
-     *        
-     * @throws NotFoundException
-     * @throws ContainerException
-     */
-    public function resolve(string $className, CacheInterface $cache = null);
 }
