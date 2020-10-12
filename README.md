@@ -1,104 +1,110 @@
-# container
+# Seeren\Container
 
- [![Build Status](https://travis-ci.org/seeren/container.svg?branch=master)](https://travis-ci.org/seeren/container) [![Coverage Status](https://coveralls.io/repos/github/seeren/container/badge.svg?branch=master)](https://coveralls.io/github/seeren/container?branch=master) [![Packagist](https://img.shields.io/packagist/dt/seeren/container.svg)](https://packagist.org/packages/seeren/container/stats) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/4a0463fb5a084be5bda68e4e36d7c7ac)](https://www.codacy.com/app/seeren/container?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=seeren/container&amp;utm_campaign=Badge_Grade) [![Packagist](https://img.shields.io/packagist/v/seeren/container.svg)](https://packagist.org/packages/seeren/container#) [![Packagist](https://img.shields.io/packagist/l/seeren/log.svg)](LICENSE)
+[![Build Status](https://travis-ci.org/seeren/container.svg?branch=master)](https://travis-ci.org/seeren/container) [![Coverage Status](https://coveralls.io/repos/github/seeren/container/badge.svg?branch=master)](https://coveralls.io/github/seeren/container?branch=master) [![Packagist](https://img.shields.io/packagist/dt/seeren/container.svg)](https://packagist.org/packages/seeren/container/stats) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/4a0463fb5a084be5bda68e4e36d7c7ac)](https://www.codacy.com/app/seeren/container?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=seeren/container&amp;utm_campaign=Badge_Grade) [![Packagist](https://img.shields.io/packagist/v/seeren/container.svg)](https://packagist.org/packages/seeren/container#) [![Packagist](https://img.shields.io/packagist/l/seeren/log.svg)](LICENSE)
 
-**Configure dependency injection**
+Resolve, configure and contain and inject dependencies
 
-> This package contain implementations of the [PSR-11 container interfaces](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-11-container.md)
-
-## Features
-
-* Manage objects creation and persistence.
-* Configure dependency injection.
+___
 
 ## Installation
 
-Require this package with [composer](https://getcomposer.org/)
+Seeren\Container is a [PSR-11 container interfaces](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-11-container.md) implementation
 
 ```
-composer require seeren/container dev-master
+composer require seeren/container
 ```
 
-## Usage
+___
 
-#### `Seeren\Container\Container`
+## Seeren\Container\Container
 
-The container can resolve an instance for a class name.
+The container create, build, store and share instances
 ```php
+use Seeren\Container\Container;
+use Dummy\Foo;
+
+$container = new Container();
 $foo = $container->get(Foo::class);
 ```
 
-Injections can be configured using class name
+### Autowiring
+
+Dependencies are resolved using type declaration
+
 ```php
+namespace Dummy;
+
 class Foo {
     public function __construct(Bar $bar){}
 }
-```
 
-Injection can be configured using @param
-```php
-class Foo {
-   /**
-    * @param Bar $bar
-    */
-    public function __construct($bar){}
-}
-```
-
-#### `Seeren\Container\Service\ServiceProvider`
-
-Object construction can be centralised in service providers.
-```php
-class Provider extends ServiceProvider
+class Bar 
 {
-    public function __construct()
-    {
-        parent::__construct([
-            "foo" => function ($c) { return new Foo($c->get("bar")); },
-            "bar" => function ($c) {  return new Bar; },
-        ]);
-    }
+    public function __construct(Baz $baz){}
+}
+
+class Baz {}
+```
+
+### Interfaces
+
+Interfaces are resolved using configuration file
+
+```php
+namespace Dummy;
+
+class Foo {
+    public function __construct(BarInterface $bar){}
 }
 ```
 
-Container can register providers.
+By default, configuration file is in `/config/services.json`
+
+```bash
+project/
+└─ config/
+   └─ services.json
+```
+
+```json
+{
+  "parameters": {},
+  "services": {
+    "Dummy\\Foo": {
+      "Dummy\\Foo\\BarInterface": "Dummy\\Foo\\Bar"
+    }
+  }
+}
+```
+
+### Parameters
+
+Parameters and primitives are resolved using configuration file
+
 ```php
-$foo = $container->register(new Provider)->get("foo");
+namespace Dummy;
+
+class Foo {
+    public function __construct(string $bar, string $baz){}
+}
 ```
 
-## Construction
-
-Using services only.
-```php
-$container = new CacheContainer;
+```json
+{
+  "parameters": {
+    "message": "Hello"
+  },
+  "services": {
+    "Dummy\\Foo": {
+      "bar": ":message",
+      "baz": "World"
+    }
+  }
+}
 ```
 
-Using class name and services.
-```php
-$container = new Container(new TypeHintingResolver, new CacheContainer);
-```
-
-Using @param and services.
-```php
-$container = new Container(new DocumentationResolver, new CacheContainer);
-```
-
-## Run Tests
-
-Run [phpunit](https://phpunit.de/) with [Xdebug](https://xdebug.org/) enable and [OPcache](http://php.net/manual/fr/book.opcache.php) disable.
-
-```
-./vendor/bin/phpunit
-```
-
-## Run Coverage
-
-Run [coveralls](https://coveralls.io/).
-
-```
-./vendor/bin/php-coveralls -v
-```
+___
 
 ## License
 
-This project is licensed under the **MIT License** - see the [license](LICENSE) file for details.
+This project is licensed under the MIT License
