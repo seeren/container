@@ -3,10 +3,11 @@
     "user": "root"
   },
   "services": {
-    "Seeren\\Container\\Dummy\\Foo": {
-      "Seeren\\Container\\Dummy\\BarInterface": "Seeren\\Container\\Dummy\\Bar",
+    "Seeren\\Container\\Test\\Mock\\Foo": {
+      "Seeren\\Container\\Test\\Mock\\BarInterface": "Seeren\\Container\\Test\\Mock\\Bar",
       "typed": ":user",
       "notTyped": "hello"
-    }
+    },
+    "Seeren\\Container\\Test\\Mock\\Qux": {}
   }
 }
