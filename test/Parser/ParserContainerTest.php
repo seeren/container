@@ -90,8 +90,8 @@ class ParserContainerTest extends TestCase
         $services = [];
         $this->getParsedMock($services);
         $this->assertTrue(
-            'root' === $services['Seeren\Container\Dummy\Foo']['typed']
-            && 'hello' === $services['Seeren\Container\Dummy\Foo']['notTyped']
+            'root' === $services['Seeren\Container\Test\Mock\Foo']['typed']
+            && 'hello' === $services['Seeren\Container\Test\Mock\Foo']['notTyped']
         );
     }
 
