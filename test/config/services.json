@@ -1,0 +1,12 @@
+{
+  "parameters": {
+    "user": "root"
+  },
+  "services": {
+    "Seeren\\Container\\Dummy\\Foo": {
+      "Seeren\\Container\\Dummy\\BarInterface": "Seeren\\Container\\Dummy\\Bar",
+      "typed": ":user",
+      "notTyped": "hello"
+    }
+  }
+}
