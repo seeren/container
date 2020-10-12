@@ -19,6 +19,11 @@ class Foo
         $notTyped,
         $optional = null)
     {
+        unset($typed);
+        unset($implementation);
+        unset($interface);
+        unset($notTyped);
+        unset($optional);
     }
 
 }

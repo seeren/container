@@ -7,6 +7,7 @@ class Qux
 
     public function __construct($qux)
     {
+        unset($qux);
     }
 
 }
