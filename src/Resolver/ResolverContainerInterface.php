@@ -3,6 +3,8 @@
 namespace Seeren\Container\Resolver;
 
 use Psr\Container\ContainerInterface;
+use Psr\Container\NotFoundExceptionInterface;
+use ReflectionMethod;
 
 /**
  * Interface to represent a resolver container
@@ -17,4 +19,15 @@ use Psr\Container\ContainerInterface;
  */
 interface ResolverContainerInterface extends ContainerInterface
 {
+
+    /**
+     * Resolve service arguments
+     *
+     * @param ReflectionMethod $constructor
+     * @return array
+     *
+     * @throws NotFoundExceptionInterface No parameter was found for constructor identifier
+     */
+    public function resolve(ReflectionMethod $constructor): array;
+
 }

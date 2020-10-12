@@ -3,6 +3,7 @@
 namespace Seeren\Container\Resolver;
 
 use ReflectionClass;
+use ReflectionMethod;
 use Seeren\Container\Exception\ContainerException;
 use Seeren\Container\Exception\NotFoundException;
 use Throwable;
@@ -25,26 +26,16 @@ class ResolverContainer implements ResolverContainerInterface
      * {@inheritDoc}
      * @see \Psr\Container\ContainerInterface::get()
      */
-    public final function get($id, array &$services = null)
+    public final function get($id, array &$services = []): object
     {
         try {
             $reflection = new ReflectionClass($id);
-            if (!($constructor = $reflection->getConstructor())) {
-                return $reflection->newInstance();
+            if (!$reflection->isInstantiable()) {
+                throw new NotFoundException('Service argument "' . $id . '" Not Found');
             }
-            $arguments = [];
-            foreach ($constructor->getParameters() as $parameter) {
-                $parameterName = $parameter->getName();
-                if (($type = $parameter->getType()) && !$type->isBuiltin()) {
-                    $typeName = $type->getName();
-                    $arguments[] = $services[$typeName] ?? $this->get($typeName, $services);
-                } else if (array_key_exists($id, $services) && array_key_exists($parameterName, $services[$id])) {
-                    $arguments[] = $services[$id][$parameterName];
-                } else {
-                    throw new NotFoundException('Service "' . $id . '" parameter "' . $parameterName . '" Not Found');
-                }
-            }
-            return $services[$id] = $reflection->newInstanceArgs($arguments);
+            return $services[$id] = ($constructor = $reflection->getConstructor())
+                ? $reflection->newInstanceArgs($this->resolve($constructor, $services))
+                : $reflection->newInstance();
         } catch (NotFoundException $e) {
             throw $e;
         } catch (Throwable $e) {
@@ -59,6 +50,29 @@ class ResolverContainer implements ResolverContainerInterface
     public final function has($id): bool
     {
         return false;
+    }
+
+    /**
+     * {@inheritDoc}
+     * @see ResolverContainerInterface::resolve()
+     */
+    public final function resolve(ReflectionMethod $constructor, array &$services = []): array
+    {
+        $arguments = [];
+        $id = $constructor->getDeclaringClass()->getName();
+        foreach ($constructor->getParameters() as $parameter) {
+            if (($type = $parameter->getType()) && !$type->isBuiltin()) {
+                $typeName = $type->getName();
+                $arguments[] = array_key_exists($id, $services) && array_key_exists($typeName, $services[$id])
+                    ? $services[$services[$id][$typeName]] ?? $this->get($services[$id][$typeName], $services)
+                    : $services[$typeName] ?? $this->get($typeName, $services);
+            } else if (array_key_exists($id, $services) && array_key_exists($parameter->getName(), $services[$id])) {
+                $arguments[] = $services[$id][$parameter->getName()];
+            } else if (!$parameter->isOptional()) {
+                throw new NotFoundException('Service "' . $id . '" parameter "' . $parameter->getName() . '" Not Found');
+            }
+        }
+        return $arguments;
     }
 
 }
