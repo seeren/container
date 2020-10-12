@@ -1,8 +1,8 @@
 {
   "name": "seeren/container",
-  "description": "Resolve, contain and inject dependencies",
+  "description": "Autowire and configure dependencies",
   "keywords": [
-    "container",
+    "autowiring",
     "service",
     "psr-11"
   ],
@@ -15,7 +15,6 @@
       "homepage": "https://github.com/seeren/container"
     }
   ],
-  "minimum-stability": "dev",
   "require": {
     "php": ">=7.4.0",
     "psr/container": "^1.0.0",
