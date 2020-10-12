@@ -44,14 +44,14 @@ class Container implements ContainerInterface
     public function __construct(string $filename = null)
     {
         $this->resolver = new ResolverContainer();
-        $filename = $filename ?? dirname(__FILE__, 6)
+        new ParserContainer(
+            $filename ?? dirname(__FILE__, 6)
             . DIRECTORY_SEPARATOR
             . 'config'
             . DIRECTORY_SEPARATOR
-            . 'services.json';
-        if (is_file($filename)) {
-            new ParserContainer($filename, $this->services);
-        }
+            . 'services.json',
+            $this->services
+        );
     }
 
     /**
