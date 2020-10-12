@@ -4,6 +4,7 @@ namespace Seeren\Container\Parser;
 
 use Seeren\Container\Exception\ContainerException;
 use Seeren\Container\Exception\NotFoundException;
+use stdClass;
 use Throwable;
 
 /**
@@ -21,9 +22,9 @@ class ParserContainer implements ParserContainerInterface
 {
 
     /**
-     * @var \stdClass
+     * @var stdClass
      */
-    private \stdClass $configuration;
+    private stdClass $configuration;
 
     /**
      * @param string $filename
@@ -33,20 +34,7 @@ class ParserContainer implements ParserContainerInterface
      */
     public function __construct(string $filename, &$services)
     {
-        if (!($configuration = json_decode(file_get_contents($filename)))
-            || !$configuration->parameters
-            || !$configuration->services) {
-            throw new ContainerException('Invalid configuration file: "' . $filename . '"');
-        }
-        $this->configuration = $configuration;
-        foreach ($this->configuration->services as $id => $service) {
-            $services[$id] = [];
-            foreach ($service as $paramName => $paramValue) {
-                $services[$id][$paramName] = ':' === substr($paramValue, 0, 1)
-                    ? $this->get(substr($paramValue, 1))
-                    : $paramValue;
-            }
-        }
+        $this->parse($filename, $services);
     }
 
     /**
@@ -73,6 +61,30 @@ class ParserContainer implements ParserContainerInterface
     public final function has($id): bool
     {
         return property_exists($this->configuration->parameters, $id);
+    }
+
+    /**
+     * {@inheritDoc}
+     * @throws NotFoundException|ContainerException
+     * @see ParserContainerInterface::parse()
+     */
+    public final function parse(string $filename, array &$services = []): stdClass
+    {
+        if (!($configuration = json_decode(file_get_contents($filename)))
+            || !property_exists($configuration,'parameters')
+            || !property_exists($configuration,'services')) {
+            throw new ContainerException('Invalid configuration file: "' . $filename . '"');
+        }
+        $this->configuration = $configuration;
+        foreach ($this->configuration->services as $id => $service) {
+            $services[$id] = [];
+            foreach ($service as $paramName => $paramValue) {
+                $services[$id][$paramName] = ':' === substr($paramValue, 0, 1)
+                    ? $this->get(substr($paramValue, 1))
+                    : $paramValue;
+            }
+        }
+        return $this->configuration;
     }
 
 }
