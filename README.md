@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/seeren/container.svg?branch=master)](https://travis-ci.org/seeren/container) [![Coverage Status](https://coveralls.io/repos/github/seeren/container/badge.svg?branch=master)](https://coveralls.io/github/seeren/container?branch=master) [![Packagist](https://img.shields.io/packagist/dt/seeren/container.svg)](https://packagist.org/packages/seeren/container/stats) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/4a0463fb5a084be5bda68e4e36d7c7ac)](https://www.codacy.com/app/seeren/container?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=seeren/container&amp;utm_campaign=Badge_Grade) [![Packagist](https://img.shields.io/packagist/v/seeren/container.svg)](https://packagist.org/packages/seeren/container#) [![Packagist](https://img.shields.io/packagist/l/seeren/log.svg)](LICENSE)
 
-Resolve, configure and contain and inject dependencies
+Autowire and configure dependencies
 
 ___
 
@@ -19,6 +19,7 @@ ___
 ## Seeren\Container\Container
 
 The container create, build, store and share instances
+
 ```php
 use Seeren\Container\Container;
 use Dummy\Foo;
@@ -48,7 +49,13 @@ class Baz {}
 
 ### Interfaces
 
-Interfaces are resolved using configuration file
+Interfaces are resolved using configuration file by default in `/config/services.json`
+
+```bash
+project/
+└─ config/
+   └─ services.json
+```
 
 ```php
 namespace Dummy;
@@ -58,20 +65,12 @@ class Foo {
 }
 ```
 
-By default, configuration file is in `/config/services.json`
-
-```bash
-project/
-└─ config/
-   └─ services.json
-```
-
 ```json
 {
   "parameters": {},
   "services": {
     "Dummy\\Foo": {
-      "Dummy\\Foo\\BarInterface": "Dummy\\Foo\\Bar"
+      "Dummy\\Foo\\BarInterface": "Dummy\\Bar"
     }
   }
 }
