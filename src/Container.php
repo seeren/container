@@ -9,6 +9,7 @@ use Seeren\Container\Exception\ContainerException;
 use Seeren\Container\Exception\NotFoundException;
 use Seeren\Container\Parser\ParserContainer;
 use Seeren\Container\Resolver\ResolverContainer;
+use Seeren\Container\Resolver\ResolverContainerInterface;
 
 /**
  * Class to represent a container
@@ -30,14 +31,15 @@ class Container implements ContainerInterface
     private array $services = [];
 
     /**
-     * @var ResolverContainer
+     * @var ResolverContainerInterface
      */
-    private ResolverContainer $resolver;
+    private ResolverContainerInterface $resolver;
 
     /**
      * @param string|null $filename
      *
-     * @throws ContainerException|NotFoundException for invalid configuration file
+     * @throws ContainerException for invalid configuration file
+     * @throws NotFoundException for missing container parameter
      */
     public function __construct(string $filename = null)
     {
