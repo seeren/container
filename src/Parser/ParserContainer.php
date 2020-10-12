@@ -5,7 +5,6 @@ namespace Seeren\Container\Parser;
 use Seeren\Container\Exception\ContainerException;
 use Seeren\Container\Exception\NotFoundException;
 use stdClass;
-use Throwable;
 
 /**
  * Class to represent a parser container
@@ -44,14 +43,10 @@ class ParserContainer implements ParserContainerInterface
      */
     public final function get($id)
     {
-        if (!$this->has($id)) {
-            throw new NotFoundException('Container parameter "' . $id . '" Not Found');
-        }
-        try {
+        if ($this->has($id)) {
             return $this->configuration->parameters->{$id};
-        } catch (Throwable $e) {
-            throw new ContainerException($e->getMessage());
         }
+        throw new NotFoundException('Container parameter "' . $id . '" Not Found');
     }
 
     /**
