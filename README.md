@@ -22,10 +22,9 @@ The container create, build, store and share instances
 
 ```php
 use Seeren\Container\Container;
-use Dummy\Foo;
 
 $container = new Container();
-$foo = $container->get(Foo::class);
+$foo = $container->get('Dummy\Foo');
 ```
 
 ### Autowiring
@@ -49,14 +48,6 @@ class Baz {}
 
 ### Interfaces
 
-Interfaces are resolved using configuration file by default in `/config/services.json`
-
-```bash
-project/
-└─ config/
-   └─ services.json
-```
-
 ```php
 namespace Dummy;
 
@@ -65,15 +56,23 @@ class Foo {
 }
 ```
 
+Interfaces are resolved using configuration file by default in `/config/services.json`
+
 ```json
 {
   "parameters": {},
   "services": {
     "Dummy\\Foo": {
-      "Dummy\\Foo\\BarInterface": "Dummy\\Bar"
+      "Dummy\\BarInterface": "Dummy\\Bar"
     }
   }
 }
+```
+
+```bash
+project/
+└─ config/
+   └─ services.json
 ```
 
 ### Parameters
@@ -84,7 +83,7 @@ Parameters and primitives are resolved using configuration file
 namespace Dummy;
 
 class Foo {
-    public function __construct(string $bar, string $baz){}
+    public function __construct(string $bar){}
 }
 ```
 
@@ -95,11 +94,37 @@ class Foo {
   },
   "services": {
     "Dummy\\Foo": {
-      "bar": ":message",
-      "baz": "World"
+      "bar": ":message"
     }
   }
 }
+```
+
+### Methods
+
+Methods can use autowiring
+
+```php
+namespace Dummy;
+
+class Foo {
+
+    public function __construct(BarInterface $bar){}
+
+    public function action(int $id, Baz $baz)
+    {
+        return 'Hello';
+    }
+
+}
+```
+
+```php
+use Seeren\Container\Container;
+
+$container = new Container();
+$message = $container->call('Dummy\Foo', 'action', [7]);
+echo $message; // Hello
 ```
 
 ___
