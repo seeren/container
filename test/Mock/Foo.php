@@ -26,4 +26,18 @@ class Foo
         unset($optional);
     }
 
+    /**
+     * @param $id
+     * @param Bar $implementation
+     * @return int
+     */
+    public function show(
+        $id,
+        Bar $implementation
+    ): int
+    {
+        unset($implementation);
+        return $id;
+    }
+
 }
