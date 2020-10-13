@@ -56,11 +56,12 @@ class ResolverContainer implements ResolverContainerInterface
      * {@inheritDoc}
      * @see ResolverContainerInterface::resolve()
      */
-    public final function resolve(ReflectionMethod $constructor, array &$services = []): array
+    public final function resolve(ReflectionMethod $method, array &$services = [], array $arguments = []): array
     {
-        $arguments = [];
-        $id = $constructor->getDeclaringClass()->getName();
-        foreach ($constructor->getParameters() as $parameter) {
+        $parameters = $method->getParameters();
+        array_splice($parameters, 0, count($arguments));
+        $id = $method->getDeclaringClass()->getName();
+        foreach ($parameters as $parameter) {
             if (($type = $parameter->getType()) && !$type->isBuiltin()) {
                 $typeName = $type->getName();
                 $arguments[] = array_key_exists($id, $services) && array_key_exists($typeName, $services[$id])
