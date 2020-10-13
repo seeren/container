@@ -3,8 +3,9 @@
 namespace Seeren\Container;
 
 use Psr\Container\ContainerExceptionInterface;
-use Psr\Container\ContainerInterface;
 use Psr\Container\NotFoundExceptionInterface;
+use ReflectionClass;
+use ReflectionException;
 use Seeren\Container\Exception\ContainerException;
 use Seeren\Container\Exception\NotFoundException;
 use Seeren\Container\Parser\ParserContainer;
@@ -78,6 +79,25 @@ class Container implements ContainerInterface
     public final function has($id): bool
     {
         return array_key_exists($id, $this->services) && is_object($this->services[$id]);
+    }
+
+    /**
+     * {@inheritDoc}
+     * @see ContainerInterface::call()
+     */
+    public function call(string $id, string $action, array $arguments = [])
+    {
+        try {
+            $service = $this->get($id);
+            $arguments = $this->resolver->resolve(
+                (new ReflectionClass($id))->getMethod($action),
+                $this->services,
+                $arguments
+            );
+        } catch (ReflectionException $e) {
+            throw new NotFoundException('Action "' . $action . '" Not Found');
+        }
+        return $service->{$action}(...$arguments);
     }
 
 }
