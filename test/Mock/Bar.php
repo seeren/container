@@ -10,6 +10,7 @@ class Bar implements BarInterface
      */
     public function __construct(Baz $baz)
     {
+        unset($baz);
     }
 
 }
