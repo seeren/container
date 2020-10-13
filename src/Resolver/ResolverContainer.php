@@ -64,7 +64,9 @@ class ResolverContainer implements ResolverContainerInterface
         foreach ($parameters as $parameter) {
             if (($type = $parameter->getType()) && !$type->isBuiltin()) {
                 $typeName = $type->getName();
-                $arguments[] = array_key_exists($id, $services) && array_key_exists($typeName, $services[$id])
+                $arguments[] = array_key_exists($id, $services)
+                && is_array($services[$id])
+                && array_key_exists($typeName, $services[$id])
                     ? $services[$services[$id][$typeName]] ?? $this->get($services[$id][$typeName], $services)
                     : $services[$typeName] ?? $this->get($typeName, $services);
             } else if (array_key_exists($id, $services) && array_key_exists($parameter->getName(), $services[$id])) {
