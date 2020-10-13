@@ -62,10 +62,10 @@ class ContainerTest extends TestCase
 
     /**
      * @dataProvider reflexionProvider
-     * @covers \Seeren\Container\Container::__construct
-     * @covers \Seeren\Container\Parser\ParserContainer::__construct
-     * @covers \Seeren\Container\Parser\ParserContainer::parse
-     * @covers \Seeren\Container\Exception\ContainerException::__construct
+     * @covers       \Seeren\Container\Container::__construct
+     * @covers       \Seeren\Container\Parser\ParserContainer::__construct
+     * @covers       \Seeren\Container\Parser\ParserContainer::parse
+     * @covers       \Seeren\Container\Exception\ContainerException::__construct
      * @param ReflectionClass $reflection
      */
     public function testConfigurationContainerException(ReflectionClass $reflection): void
@@ -160,6 +160,51 @@ class ContainerTest extends TestCase
     {
         $mock = $this->getMock($reflection);
         $this->assertEquals($mock->get(Foo::class), $mock->get(Foo::class));
+    }
+
+    /**
+     * @dataProvider reflexionProvider
+     * @covers       \Seeren\Container\Container::__construct
+     * @covers       \Seeren\Container\Container::call
+     * @covers       \Seeren\Container\Container::get
+     * @covers       \Seeren\Container\Container::has
+     * @covers       \Seeren\Container\Parser\ParserContainer::__construct
+     * @covers       \Seeren\Container\Parser\ParserContainer::get
+     * @covers       \Seeren\Container\Parser\ParserContainer::has
+     * @covers       \Seeren\Container\Parser\ParserContainer::parse
+     * @covers       \Seeren\Container\Resolver\ResolverContainer::get
+     * @covers       \Seeren\Container\Resolver\ResolverContainer::resolve
+     * @covers       \Seeren\Container\Exception\NotFoundException::__construct
+     * @param ReflectionClass $reflection
+     */
+    public function testCallNotFoundException(ReflectionClass $reflection): void
+    {
+        $mock = $this->getMock($reflection);
+        $this->expectException(NotFoundException::class);
+        $mock->call(Foo::class, "methodName");
+    }
+
+    /**
+     * @dataProvider reflexionProvider
+     * @covers       \Seeren\Container\Container::__construct
+     * @covers       \Seeren\Container\Container::call
+     * @covers       \Seeren\Container\Container::get
+     * @covers       \Seeren\Container\Container::has
+     * @covers       \Seeren\Container\Parser\ParserContainer::__construct
+     * @covers       \Seeren\Container\Parser\ParserContainer::get
+     * @covers       \Seeren\Container\Parser\ParserContainer::has
+     * @covers       \Seeren\Container\Parser\ParserContainer::parse
+     * @covers       \Seeren\Container\Resolver\ResolverContainer::get
+     * @covers       \Seeren\Container\Resolver\ResolverContainer::resolve
+     * @param ReflectionClass $reflection
+     */
+    public function testCall(ReflectionClass $reflection): void
+    {
+        $mock = $this->getMock($reflection);
+        $this->assertEquals(
+            7,
+            $mock->call(Foo::class, "show", [7])
+        );
     }
 
 }
