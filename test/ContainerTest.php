@@ -25,7 +25,7 @@ class ContainerTest extends TestCase
 
     /**
      * @param ReflectionClass $reflection
-     * @param string|null $filename
+     * @param bool $auto
      * @return object
      */
     public function getMock(
