@@ -46,7 +46,7 @@ class Container implements ContainerInterface
     {
         $this->resolver = new ResolverContainer();
         new ParserContainer(
-            $filename ?? dirname(__FILE__, 6)
+            $filename ?? dirname(__FILE__, 5)
             . DIRECTORY_SEPARATOR
             . 'config'
             . DIRECTORY_SEPARATOR

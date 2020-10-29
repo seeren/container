@@ -69,7 +69,7 @@ class ParserContainer implements ParserContainerInterface
             || !($configuration = json_decode(file_get_contents($filename)))
             || !property_exists($configuration, 'parameters')
             || !property_exists($configuration, 'services')) {
-            throw new ContainerException('Invalid configuration file: "' . $filename . '"');
+            throw new ContainerException('Invalid "' . $filename . '" configuration file');
         }
         $this->configuration = $configuration;
         foreach ($this->configuration->services as $id => $service) {
