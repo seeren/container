@@ -46,9 +46,7 @@ class Container implements ContainerInterface
     {
         $this->resolver = new ResolverContainer();
         new ParserContainer(
-            $filename ?? dirname(__FILE__, 5)
-            . DIRECTORY_SEPARATOR
-            . 'config'
+            ($filename ?? dirname(__FILE__, 5) . DIRECTORY_SEPARATOR . 'config')
             . DIRECTORY_SEPARATOR
             . 'services.json',
             $this->services

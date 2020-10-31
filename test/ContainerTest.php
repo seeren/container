@@ -32,13 +32,7 @@ class ContainerTest extends TestCase
         ReflectionClass $reflection,
         bool $auto = false): object
     {
-        return $reflection->newInstance(!$auto
-            ? __DIR__
-            . DIRECTORY_SEPARATOR
-            . 'config'
-            . DIRECTORY_SEPARATOR
-            . 'services.json'
-            : null);
+        return $reflection->newInstance(!$auto ? __DIR__ . DIRECTORY_SEPARATOR . 'config' : null);
     }
 
     /**
