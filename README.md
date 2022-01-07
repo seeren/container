@@ -1,22 +1,26 @@
-# Seeren\Container
+# Seeren\\Container
 
-[![Build Status](https://travis-ci.org/seeren/container.svg?branch=master)](https://travis-ci.org/seeren/container) [![Coverage Status](https://coveralls.io/repos/github/seeren/container/badge.svg?branch=master)](https://coveralls.io/github/seeren/container?branch=master) [![Packagist](https://img.shields.io/packagist/dt/seeren/container.svg)](https://packagist.org/packages/seeren/container/stats) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/4a0463fb5a084be5bda68e4e36d7c7ac)](https://www.codacy.com/app/seeren/container?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=seeren/container&amp;utm_campaign=Badge_Grade) [![Packagist](https://img.shields.io/packagist/v/seeren/container.svg)](https://packagist.org/packages/seeren/container#) [![Packagist](https://img.shields.io/packagist/l/seeren/log.svg)](LICENSE)
+[![Build](https://app.travis-ci.com/seeren/http.svg?branch=master)](https://app.travis-ci.com/seeren/container)
+[![Require](https://poser.pugx.org/seeren/container/require/php)](https://packagist.org/packages/seeren/container)
+[![Coverage](https://coveralls.io/repos/github/seeren/error/badge.svg?branch=master)](https://coveralls.io/github/seeren/container?branch=master)
+[![Download](https://img.shields.io/packagist/dt/seeren/container.svg)](https://packagist.org/packages/seeren/container/stats)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/c8dba7431c6e4bebbb956387fc827b0d)](https://www.codacy.com/gh/seeren/container/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=seeren/container&amp;utm_campaign=Badge_Grade)
+[![Version](https://img.shields.io/packagist/v/seeren/container.svg)](https://packagist.org/packages/seeren/container)
 
 Autowire and configure dependencies
 
-___
+* * *
 
 ## Installation
 
-Seeren\Container is a [PSR-11 container interfaces](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-11-container.md) implementation
+Seeren\\Container is a [PSR-11 container interfaces](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-11-container.md) implementation
 
-```
+```bash
 composer require seeren/container
 ```
+* * *
 
-___
-
-## Seeren\Container\Container
+## Seeren\\Container\\Container
 
 The container create, build, store and share instances
 
@@ -24,6 +28,7 @@ The container create, build, store and share instances
 use Seeren\Container\Container;
 
 $container = new Container();
+
 $foo = $container->get('Dummy\Foo');
 ```
 
@@ -34,7 +39,8 @@ Dependencies are resolved using type declaration
 ```php
 namespace Dummy;
 
-class Foo {
+class Foo
+{
     public function __construct(Bar $bar){}
 }
 
@@ -58,6 +64,7 @@ class Foo {
 
 Interfaces are resolved using configuration file by default in `/config/services.json`
 
+
 ```json
 {
   "parameters": {},
@@ -69,11 +76,14 @@ Interfaces are resolved using configuration file by default in `/config/services
 }
 ```
 
+Include path can be specified at construction
+
 ```bash
 project/
 └─ config/
    └─ services.json
 ```
+
 
 ### Parameters
 
@@ -82,7 +92,8 @@ Parameters and primitives are resolved using configuration file
 ```php
 namespace Dummy;
 
-class Foo {
+class Foo
+{
     public function __construct(string $bar){}
 }
 ```
@@ -107,7 +118,8 @@ Methods can use autowiring
 ```php
 namespace Dummy;
 
-class Foo {
+class Foo
+{
 
     public function __construct(BarInterface $bar){}
 
@@ -123,12 +135,14 @@ class Foo {
 use Seeren\Container\Container;
 
 $container = new Container();
+
 $message = $container->call('Dummy\Foo', 'action', [7]);
+
 echo $message; // Hello
 ```
 
-___
+* * *
 
 ## License
 
-This project is licensed under the MIT License
+This project is licensed under the [MIT](./LICENSE) License
