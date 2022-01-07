@@ -23,11 +23,11 @@ class Container implements ContainerInterface
      * @throws ContainerExceptionInterface
      * @throws NotFoundExceptionInterface
      */
-    public function __construct(string $filename = null)
+    public function __construct(string $includePath = null)
     {
         $this->resolver = new ResolverContainer();
         new ParserContainer(
-            ($filename ?? dirname(__FILE__, 5) . DIRECTORY_SEPARATOR . 'config')
+            ($includePath ?? dirname(__FILE__, 5) . DIRECTORY_SEPARATOR . 'config')
             . DIRECTORY_SEPARATOR
             . 'services.json',
             $this->services
