@@ -13,9 +13,6 @@ use Seeren\Container\Test\Mock\Foo;
 class ContainerTest extends TestCase
 {
 
-    /**
-     * @return array
-     */
     public function reflexionProvider(): array
     {
         return [[
@@ -23,11 +20,6 @@ class ContainerTest extends TestCase
         ]];
     }
 
-    /**
-     * @param ReflectionClass $reflection
-     * @param bool $auto
-     * @return object
-     */
     public function getMock(
         ReflectionClass $reflection,
         bool $auto = false): object
@@ -42,9 +34,6 @@ class ContainerTest extends TestCase
      * @covers       \Seeren\Container\Parser\ParserContainer::get
      * @covers       \Seeren\Container\Parser\ParserContainer::has
      * @covers       \Seeren\Container\Parser\ParserContainer::parse
-     * @param ReflectionClass $reflection
-     *
-     * @throws \ReflectionException
      */
     public function testConfiguration(ReflectionClass $reflection): void
     {
@@ -60,7 +49,6 @@ class ContainerTest extends TestCase
      * @covers       \Seeren\Container\Parser\ParserContainer::__construct
      * @covers       \Seeren\Container\Parser\ParserContainer::parse
      * @covers       \Seeren\Container\Exception\ContainerException::__construct
-     * @param ReflectionClass $reflection
      */
     public function testConfigurationContainerException(ReflectionClass $reflection): void
     {
@@ -88,7 +76,6 @@ class ContainerTest extends TestCase
      * @covers       \Seeren\Container\Parser\ParserContainer::parse
      * @covers       \Seeren\Container\Resolver\ResolverContainer::get
      * @covers       \Seeren\Container\Resolver\ResolverContainer::resolve
-     * @param ReflectionClass $reflection
      */
     public function testHas(ReflectionClass $reflection): void
     {
@@ -108,7 +95,6 @@ class ContainerTest extends TestCase
      * @covers       \Seeren\Container\Parser\ParserContainer::parse
      * @covers       \Seeren\Container\Resolver\ResolverContainer::get
      * @covers       \Seeren\Container\Exception\NotFoundException::__construct
-     * @param ReflectionClass $reflection
      */
     public function testNotFoundException(ReflectionClass $reflection): void
     {
@@ -128,7 +114,6 @@ class ContainerTest extends TestCase
      * @covers       \Seeren\Container\Parser\ParserContainer::parse
      * @covers       \Seeren\Container\Resolver\ResolverContainer::get
      * @covers       \Seeren\Container\Exception\ContainerException::__construct
-     * @param ReflectionClass $reflection
      */
     public function testContainerException(ReflectionClass $reflection): void
     {
@@ -148,7 +133,6 @@ class ContainerTest extends TestCase
      * @covers       \Seeren\Container\Parser\ParserContainer::parse
      * @covers       \Seeren\Container\Resolver\ResolverContainer::get
      * @covers       \Seeren\Container\Resolver\ResolverContainer::resolve
-     * @param ReflectionClass $reflection
      */
     public function testGet(ReflectionClass $reflection): void
     {
@@ -169,7 +153,6 @@ class ContainerTest extends TestCase
      * @covers       \Seeren\Container\Resolver\ResolverContainer::get
      * @covers       \Seeren\Container\Resolver\ResolverContainer::resolve
      * @covers       \Seeren\Container\Exception\NotFoundException::__construct
-     * @param ReflectionClass $reflection
      */
     public function testCallNotFoundException(ReflectionClass $reflection): void
     {
@@ -190,7 +173,6 @@ class ContainerTest extends TestCase
      * @covers       \Seeren\Container\Parser\ParserContainer::parse
      * @covers       \Seeren\Container\Resolver\ResolverContainer::get
      * @covers       \Seeren\Container\Resolver\ResolverContainer::resolve
-     * @param ReflectionClass $reflection
      */
     public function testCall(ReflectionClass $reflection): void
     {

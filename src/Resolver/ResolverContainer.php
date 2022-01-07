@@ -8,24 +8,9 @@ use Seeren\Container\Exception\ContainerException;
 use Seeren\Container\Exception\NotFoundException;
 use Throwable;
 
-/**
- * Class to represent a resolver container
- *
- *     __
- *    / /__ __ __ __ __ __
- *   / // // // // // // /
- *  /_// // // // // // /
- *    /_//_//_//_//_//_/
- *
- * @package Seeren\Container\Resolver
- */
 class ResolverContainer implements ResolverContainerInterface
 {
 
-    /**
-     * {@inheritDoc}
-     * @see \Psr\Container\ContainerInterface::get()
-     */
     public final function get($id, array &$services = []): object
     {
         try {
@@ -43,19 +28,11 @@ class ResolverContainer implements ResolverContainerInterface
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * @see \Psr\Container\ContainerInterface::has()
-     */
-    public final function has($id): bool
+    public final function has(string $id): bool
     {
         return false;
     }
 
-    /**
-     * {@inheritDoc}
-     * @see ResolverContainerInterface::resolve()
-     */
     public final function resolve(ReflectionMethod $method, array &$services = [], array $arguments = []): array
     {
         $parameters = $method->getParameters();

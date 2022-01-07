@@ -6,17 +6,6 @@ use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\NotFoundExceptionInterface;
 use Throwable;
 
-/**
- * Interface to represent a container
- *
- *     __
- *    / /__ __ __ __ __ __
- *   / // // // // // // /
- *  /_// // // // // // /
- *    /_//_//_//_//_//_/
- *
- * @package Seeren\Container
- */
 interface ContainerInterface extends \Psr\Container\ContainerInterface
 {
 
@@ -30,8 +19,8 @@ interface ContainerInterface extends \Psr\Container\ContainerInterface
      *
      * @throws NotFoundExceptionInterface No entry was found for **this** identifier.
      * @throws ContainerExceptionInterface Error while retrieving the entry
-     * @throws Throwable Error will calling the callable
+     * @throws Throwable Error while calling the callable
      */
-    public function call(string $id, string $action, array $arguments = []);
+    public function call(string $id, string $action, array $arguments = []): mixed;
 
 }

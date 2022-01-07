@@ -12,35 +12,16 @@ use Seeren\Container\Parser\ParserContainer;
 use Seeren\Container\Resolver\ResolverContainer;
 use Seeren\Container\Resolver\ResolverContainerInterface;
 
-/**
- * Class to represent a container
- *
- *     __
- *    / /__ __ __ __ __ __
- *   / // // // // // // /
- *  /_// // // // // // /
- *    /_//_//_//_//_//_/
- *
- * @package Seeren\Container
- */
 class Container implements ContainerInterface
 {
 
-    /**
-     * @var array
-     */
     private array $services = [];
 
-    /**
-     * @var ResolverContainerInterface
-     */
     private ResolverContainerInterface $resolver;
 
     /**
-     * @param string|null $filename
-     *
-     * @throws ContainerException for invalid configuration file
-     * @throws NotFoundException for missing container parameter
+     * @throws ContainerExceptionInterface
+     * @throws NotFoundExceptionInterface
      */
     public function __construct(string $filename = null)
     {
@@ -53,37 +34,23 @@ class Container implements ContainerInterface
         );
     }
 
-    /**
-     * {@inheritDoc}
-     * @see \Psr\Container\ContainerInterface::get()
-     */
-    public final function get($id): object
+    public final function get(string $id): object
     {
         try {
             return !$this->has($id)
                 ? $this->services[$id] = $this->resolver->get($id, $this->services)
                 : $this->services[$id];
-        } catch (NotFoundExceptionInterface $e) {
-            throw $e;
-        } catch (ContainerExceptionInterface $e) {
+        } catch (NotFoundExceptionInterface|ContainerExceptionInterface $e) {
             throw $e;
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * @see \Psr\Container\ContainerInterface::has()
-     */
-    public final function has($id): bool
+    public final function has(string $id): bool
     {
         return array_key_exists($id, $this->services) && is_object($this->services[$id]);
     }
 
-    /**
-     * {@inheritDoc}
-     * @see ContainerInterface::call()
-     */
-    public function call(string $id, string $action, array $arguments = [])
+    public final function call(string $id, string $action, array $arguments = []): mixed
     {
         try {
             $service = $this->get($id);

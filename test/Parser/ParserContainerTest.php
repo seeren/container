@@ -11,9 +11,6 @@ use Seeren\Container\Parser\ParserContainer;
 class ParserContainerTest extends TestCase
 {
 
-    /**
-     * @return string
-     */
     public function getFilename(): string
     {
         return __DIR__
@@ -25,13 +22,6 @@ class ParserContainerTest extends TestCase
             . 'services.json';
     }
 
-    /**
-     * @param array $services
-     * @return object
-     *
-     * @throws ContainerException
-     * @throws NotFoundException
-     */
     public function getParsedMock(array &$services): object
     {
         $mock = $this->createMock(ParserContainer::class);
@@ -44,9 +34,6 @@ class ParserContainerTest extends TestCase
      * @covers \Seeren\Container\Parser\ParserContainer::get
      * @covers \Seeren\Container\Parser\ParserContainer::has
      * @covers \Seeren\Container\Exception\ContainerException::__construct
-     *
-     * @throws ContainerException
-     * @throws NotFoundException
      */
     public function testParseInvalid(): void
     {
@@ -81,9 +68,6 @@ class ParserContainerTest extends TestCase
      * @covers \Seeren\Container\Parser\ParserContainer::parse
      * @covers \Seeren\Container\Parser\ParserContainer::get
      * @covers \Seeren\Container\Parser\ParserContainer::has
-     *
-     * @throws ContainerException
-     * @throws NotFoundException
      */
     public function testParse(): void
     {
@@ -100,9 +84,6 @@ class ParserContainerTest extends TestCase
      * @covers \Seeren\Container\Parser\ParserContainer::parse
      * @covers \Seeren\Container\Parser\ParserContainer::get
      * @covers \Seeren\Container\Parser\ParserContainer::has
-     *
-     * @throws ContainerException
-     * @throws NotFoundException
      */
     public function testGet(): void
     {

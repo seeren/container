@@ -6,17 +6,6 @@ use Psr\Container\ContainerInterface;
 use Psr\Container\NotFoundExceptionInterface;
 use ReflectionMethod;
 
-/**
- * Interface to represent a resolver container
- *
- *     __
- *    / /__ __ __ __ __ __
- *   / // // // // // // /
- *  /_// // // // // // /
- *    /_//_//_//_//_//_/
- *
- * @package Seeren\Container\Resolver
- */
 interface ResolverContainerInterface extends ContainerInterface
 {
 

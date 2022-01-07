@@ -5,13 +5,6 @@ namespace Seeren\Container\Test\Mock;
 class Foo
 {
 
-    /**
-     * @param string $typed
-     * @param Bar $implementation
-     * @param BarInterface $interface
-     * @param $notTyped
-     * @param null $optional
-     */
     public function __construct(
         string $typed,
         Bar $implementation,
@@ -26,11 +19,6 @@ class Foo
         unset($optional);
     }
 
-    /**
-     * @param $id
-     * @param Bar $implementation
-     * @return int
-     */
     public function show(
         $id,
         Bar $implementation

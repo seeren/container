@@ -15,12 +15,6 @@ use Seeren\Container\Test\Mock\Qux;
 class ResolverTest extends TestCase
 {
 
-    /**
-     * @return \array[][]
-     *
-     * @throws ContainerException
-     * @throws NotFoundException
-     */
     public function servicesProvider(): array
     {
         $services = [];
@@ -42,7 +36,6 @@ class ResolverTest extends TestCase
      * @dataProvider servicesProvider
      * @covers       \Seeren\Container\Exception\ContainerException::__construct
      * @covers       \Seeren\Container\Resolver\ResolverContainer::get
-     * @param array $services
      */
     public function testGetContainerException(array $services): void
     {
@@ -55,7 +48,6 @@ class ResolverTest extends TestCase
      * @dataProvider servicesProvider
      * @covers       \Seeren\Container\Exception\NotFoundException::__construct
      * @covers       \Seeren\Container\Resolver\ResolverContainer::get
-     * @param array $services
      */
     public function testGetNotFoundException(array $services): void
     {
@@ -69,7 +61,6 @@ class ResolverTest extends TestCase
      * @covers       \Seeren\Container\Exception\NotFoundException::__construct
      * @covers       \Seeren\Container\Resolver\ResolverContainer::get
      * @covers       \Seeren\Container\Resolver\ResolverContainer::resolve
-     * @param array $services
      */
     public function testResolveNotFoundException(array $services): void
     {
@@ -81,7 +72,6 @@ class ResolverTest extends TestCase
     /**
      * @dataProvider servicesProvider
      * @covers       \Seeren\Container\Resolver\ResolverContainer::get
-     * @param array $services
      */
     public function testGetClass(array $services): void
     {
@@ -93,7 +83,6 @@ class ResolverTest extends TestCase
      * @dataProvider servicesProvider
      * @covers       \Seeren\Container\Resolver\ResolverContainer::get
      * @covers       \Seeren\Container\Resolver\ResolverContainer::resolve
-     * @param array $services
      */
     public function testGetService(array $services): void
     {
