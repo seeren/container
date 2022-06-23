@@ -7,8 +7,8 @@ class Foo
 
     public function __construct(
         string $typed,
-        Bar $implementation,
         BarInterface $interface,
+        Bar $implementation,
         $notTyped,
         $optional = null)
     {

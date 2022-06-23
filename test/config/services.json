@@ -8,6 +8,9 @@
       "typed": ":user",
       "notTyped": "hello"
     },
-    "Seeren\\Container\\Test\\Mock\\Qux": {}
+    "Seeren\\Container\\Test\\Mock\\Qux": {},
+    "Seeren\\Container\\Test\\Mock\\Bar": {
+      "typed": ":user"
+    }
   }
 }
