@@ -21,7 +21,9 @@ class ParserContainer implements ParserContainerInterface
      */
     public function __construct(string $filename, &$services)
     {
-        $this->parse($filename, $services);
+        if (is_file($filename)) {
+            $this->parse($filename, $services);
+        }
     }
 
     public final function get(string $id)
@@ -39,10 +41,11 @@ class ParserContainer implements ParserContainerInterface
 
     public final function parse(string $filename, array &$services = []): stdClass
     {
-        if (!is_file($filename)
-            || !($configuration = json_decode(file_get_contents($filename)))
+        if (
+            !($configuration = json_decode(file_get_contents($filename)))
             || !property_exists($configuration, 'parameters')
-            || !property_exists($configuration, 'services')) {
+            || !property_exists($configuration, 'services')
+        ) {
             throw new ContainerException('Invalid "' . $filename . '" configuration file');
         }
         $this->configuration = $configuration;
@@ -56,5 +59,4 @@ class ParserContainer implements ParserContainerInterface
         }
         return $this->configuration;
     }
-
 }
