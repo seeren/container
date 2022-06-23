@@ -41,11 +41,17 @@ class ResolverContainer implements ResolverContainerInterface
         foreach ($parameters as $parameter) {
             if (($type = $parameter->getType()) && !$type->isBuiltin()) {
                 $typeName = $type->getName();
-                $arguments[] = array_key_exists($id, $services)
-                && is_array($services[$id])
-                && array_key_exists($typeName, $services[$id])
-                    ? $services[$services[$id][$typeName]] ?? $this->get($services[$id][$typeName], $services)
-                    : $services[$typeName] ?? $this->get($typeName, $services);
+                if (array_key_exists($id, $services)
+                    && is_array($services[$id])
+                    && array_key_exists($typeName, $services[$id])) {
+                    $arguments[] = is_object($services[$services[$id][$typeName]])
+                        ? $services[$services[$id][$typeName]]
+                        : $this->get($services[$id][$typeName], $services);
+                } else {
+                    $arguments[] = array_key_exists($typeName, $services) && is_object($services[$typeName])
+                    ? $services[$typeName]
+                    : $this->get($typeName, $services);
+                }
             } else if (array_key_exists($id, $services) && array_key_exists($parameter->getName(), $services[$id])) {
                 $arguments[] = $services[$id][$parameter->getName()];
             } else if (!$parameter->isOptional()) {
@@ -54,5 +60,4 @@ class ResolverContainer implements ResolverContainerInterface
         }
         return $arguments;
     }
-
 }
