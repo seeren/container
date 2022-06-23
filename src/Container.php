@@ -6,7 +6,6 @@ use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\NotFoundExceptionInterface;
 use ReflectionClass;
 use ReflectionException;
-use Seeren\Container\Exception\ContainerException;
 use Seeren\Container\Exception\NotFoundException;
 use Seeren\Container\Parser\ParserContainer;
 use Seeren\Container\Resolver\ResolverContainer;
