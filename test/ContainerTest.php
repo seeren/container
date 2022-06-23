@@ -3,6 +3,7 @@
 namespace Seeren\Container\Test;
 
 use PHPUnit\Framework\TestCase;
+use Psr\Container\ContainerInterface;
 use ReflectionClass;
 use Seeren\Container\Container;
 use Seeren\Container\Exception\ContainerException;
@@ -50,10 +51,9 @@ class ContainerTest extends TestCase
      * @covers       \Seeren\Container\Parser\ParserContainer::parse
      * @covers       \Seeren\Container\Exception\ContainerException::__construct
      */
-    public function testConfigurationContainerException(ReflectionClass $reflection): void
+    public function testConfigurationContainerNoException(ReflectionClass $reflection): void
     {
-        $this->expectException(ContainerException::class);
-        $this->getMock($reflection, true);
+        $this->assertTrue($this->getMock($reflection, true) instanceof ContainerInterface);
     }
 
     /**
